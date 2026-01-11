@@ -4,6 +4,8 @@ import gridModel from "../../assets/images/products/grid-model.jpg";
 import gridModern from "../../assets/images/products/grid-modern.jpg";
 import gridSk8Black from "../../assets/images/products/grid-sk8-black.jpg";
 import gridFuture from "../../assets/images/products/grid-future.jpg";
+import { Overlay } from "../Overlay";
+import { Button } from "../Button";
 
 export const Gallery = () => {
   return (
@@ -69,11 +71,21 @@ export const Gallery = () => {
       `}</style>
 
       <div className="gallery-grid container">
-        <img
-          src={gridHighlight}
-          alt="Modelo masculino com tênis"
-          className="gallery-highlight w-full h-full object-cover rounded-[20px]"
-        />
+        <div className="relative rounded-[20px] gallery-highlight">
+          <img
+            src={gridHighlight}
+            alt="Modelo masculino com tênis"
+            className="w-full h-full object-cover rounded-[20px]"
+          />
+          <Overlay
+            title="Krypton One"
+            subtitle="Street style with intension"
+            className="inset-0 justify-center"
+          >
+            <Button variant="secondary">Women</Button>
+            <Button>Men</Button>
+          </Overlay>
+        </div>
         <img
           src={gridSk8Purple}
           alt="Tênis roxo"
