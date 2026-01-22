@@ -1,25 +1,25 @@
-import Logo from "@/assets/images/logo/logo.svg";
-import IconUser from "@/assets/images/icons/icon-user.svg";
-import IconHelp from "@/assets/images/icons/icon-help.svg";
-import IconCart from "@/assets/images/icons/icon-cart.svg";
-import { Link } from "@tanstack/react-router";
+import Logo from '@/assets/images/logo/logo.svg';
+import IconUser from '@/assets/images/icons/icon-user.svg';
+import IconHelp from '@/assets/images/icons/icon-help.svg';
+import IconCart from '@/assets/images/icons/icon-cart.svg';
+import { Link } from '@tanstack/react-router';
 
 export const Header = () => {
   return (
     <div className="relative">
       <header
-        className="fixed 
+        className="fixed
                           top-10 left-0 right-0 z-10
                           mx-10"
       >
         <div
-          className="bg-white 
+          className="bg-[#fafafa]
                     text-[#6329A2]
-                    max-w[1320px] 
-                    mx-auto 
+                    max-w[1320px]
+                    mx-auto
                     flex justify-between items-center
                     py-3 px-7
-                    rounded-2xl mt-5"
+                    rounded-2xl mt-5 shadow-md"
         >
           <img src={Logo} alt="logo Syntaxwear" className="w-32 md:w-36" />
 
