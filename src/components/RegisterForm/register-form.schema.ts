@@ -19,7 +19,7 @@ export const registerUserFormSchema = z
       .string()
       .refine((date) => !isNaN(Date.parse(date)), "Invalid birth date"),
 
-    cellphone: z.string().min(1, "Required"),
+    phone: z.string().min(1, "Required"),
 
     password: z.string().min(8, "8 characters minimum"),
 
@@ -43,8 +43,14 @@ export const useRegisterForm = () => {
     resolver: zodResolver(registerUserFormSchema),
     mode: "onBlur",
     defaultValues: {
-      email: "",
-      password: "",
+      firstName: '',
+      lastName: '',
+      email: '',
+      cpf: '',
+      birthDate: '',
+      phone: '',
+      password: '',
+      confirmPassword: '',
     },
     criteriaMode: "all",
   });
