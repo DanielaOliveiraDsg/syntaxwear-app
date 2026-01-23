@@ -11,7 +11,7 @@ interface ProductCardProps {
 export const ProductCard = ({ product }: ProductCardProps) => {
   return (
     <div className="rounded-2xl bg-[#fafafa] shadow-md">
-      <Link to="/products">
+      <Link to="/products/$productId" params={{ productId: String(product.id)}}>
         <img
           src={product.image}
           alt={product.name}

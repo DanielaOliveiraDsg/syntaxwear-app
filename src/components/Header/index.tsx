@@ -8,20 +8,13 @@ export const Header = () => {
   return (
     <div className="relative">
       <header
-        className="fixed
-                          top-10 left-0 right-0 z-10
-                          mx-10"
+        className="fixed top-10 left-0 right-0 z-10
+ mx-10"
       >
-        <div
-          className="bg-[#fafafa]
-                    text-[#6329A2]
-                    max-w[1320px]
-                    mx-auto
-                    flex justify-between items-center
-                    py-3 px-7
-                    rounded-2xl mt-5 shadow-md"
-        >
-          <img src={Logo} alt="logo Syntaxwear" className="w-32 md:w-36" />
+        <div className="bg-[#fafafa] text-[#6329A2] max-w[1320px] mx-auto flex justify-between items-center py-3 px-7 rounded-2xl mt-5 shadow-md">
+          <Link to="/">
+            <img src={Logo} alt="logo Syntaxwear" className="w-32 md:w-36" />
+          </Link>
 
           <nav className="hidden md:block">
             <ul className="flex gap-10">

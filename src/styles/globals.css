@@ -49,8 +49,9 @@
 }
 
 body {
-    font-family: var(--font-display); 
+    font-family: var(--font-display);
     color: #ffffff;
+    background-color: var(--color-surface);
 }
 
 /* --- side scrolling works only with mobile, not in desktop --- */
