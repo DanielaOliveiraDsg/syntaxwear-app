@@ -3,7 +3,7 @@ import { useRegisterForm } from '../RegisterForm/register-form.schema';
 export const LoginForm = () => {
   const { register, errors, isSubmitting } = useRegisterForm();
   return (
-    <form>
+    <form className='text-[#6329A2]'>
       <div>
         <label className="text-xs text-gray-600">E-mail*</label>
         <input
