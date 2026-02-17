@@ -1,37 +1,12 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import IconCart from '../../assets/images/icons/icon-cart.svg';
-import MensTreeDasher from '@/assets/images/products/tree-dasher-2-natural-black-boyal-blue.webp';
-import MensTreeRunnerNz from '@/assets/images/products/tree-runner-nz-weathered-brown.webp';
-import MensWoolCruiser from '@/assets/images/products/wool-cruiser-burgundy.webp';
-import MensWoolCruiserSlipOn from '@/assets/images/products/wool-cruiser-slip-on-dark-grey.webp';
-import MensWoolCruiserWaterproof from '@/assets/images/products/wool-cruiser-waterproof-natural-black.webp';
 import { formatCurrency } from '../../utils/formatCurrency';
+import { CartContext } from '../../contexts/CartContext';
 
-const productsInCart = [
-  { id: 1, name: 'Produto 1', image: MensTreeDasher, price: 350, quantity: 5 },
-  { id: 2, name: 'Produto 2', image: MensTreeRunnerNz, price: 75, quantity: 2 },
-  { id: 3, name: 'Produto 3', image: MensWoolCruiser, price: 85, quantity: 4 },
-  {
-    id: 4,
-    name: 'Produto 4',
-    image: MensWoolCruiserSlipOn,
-    price: 135,
-    quantity: 6,
-  },
-  {
-    id: 5,
-    name: 'Produto 5',
-    image: MensWoolCruiserWaterproof,
-    price: 150,
-    quantity: 2,
-  },
-  { id: 1, name: 'Produto 1', image: MensTreeDasher, price: 350, quantity: 5 },
-  { id: 2, name: 'Produto 2', image: MensTreeRunnerNz, price: 75, quantity: 2 },
-  { id: 3, name: 'Produto 3', image: MensWoolCruiser, price: 85, quantity: 4 },
-];
 
 export const ShoppingCart = () => {
   const [cartIsOpen, setCartIsOpen] = useState<boolean>(false);
+  const {cart, removeItem, increment, decrement} = useContext(CartContext);
 
   return (
     <>
@@ -54,7 +29,7 @@ export const ShoppingCart = () => {
         >
           <header className="flex items-center justify-between px-5">
             <p className="text-2xl font-bold">
-              Shopping Cart ({productsInCart.length})
+              Shopping Cart ({cart.length})
             </p>
             <button
               className="text-xl cursor-pointer"
@@ -66,12 +41,12 @@ export const ShoppingCart = () => {
 
           {/* Mock products, later will be done with Backend */}
           <ul className="px-4 overflow-y-auto scrollbar-hide h-[calc(100%-140px)]">
-            {productsInCart.map((product) => (
+            {cart.map((product) => (
               <li
                 key={product.id}
                 className="flex flex-col gap-1 px-6 py-1 mt-4 border-b border-gray-300"
               >
-                <button className="self-end text-xs cursor-pointer">X</button>
+                <button className="self-end text-xs cursor-pointer" onClick={()=> removeItem(product.id)}>X</button>
 
                 {/* each product in the cart */}
 
@@ -95,11 +70,11 @@ export const ShoppingCart = () => {
                     </div>
 
                     <div className="border flex  items-center gap-6 py-1 px-3">
-                      <button className="cursor-pointer font-bold text-lg">
+                      <button className="cursor-pointer font-bold text-lg" onClick={() => decrement(product)}>
                         -
                       </button>
                       <p>{product.quantity}</p>
-                      <button className="cursor-pointer font-bold">+</button>
+                      <button className="cursor-pointer font-bold" onClick={() => increment(product)}>+</button>
                     </div>
                   </div>
                 </div>

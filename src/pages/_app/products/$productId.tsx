@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { products } from '../../../mocks/products';
 import { formatCurrency } from '../../../utils/formatCurrency';
+import { useContext } from 'react';
+import { CartContext } from '../../../contexts/CartContext';
 
 // DINAMIC ROUTE FOR PRODUCT DETAIL
 
@@ -9,11 +11,14 @@ export const Route = createFileRoute('/_app/products/$productId')({
 });
 
 function RouteComponent() {
+  const { addItem } = useContext(CartContext)
   const { productId } = Route.useParams();
 
   const filteredProduct = products.find(
     (product) => product.id === Number(productId)
   );
+
+  if(!filteredProduct) return;
 
   const originalPrice = filteredProduct?.price ?? 0;
   const discountPrice = originalPrice * 0.9;
@@ -79,7 +84,7 @@ function RouteComponent() {
             </form>
           </div>
 
-          <button className='bg-[#6329A2] text-accent-light w-full py-3 px-6 rounded-md cursor-pointer transition hover:opacity-90'>Add to Cart</button>
+          <button className='bg-[#6329A2] text-accent-light w-full py-3 px-6 rounded-md cursor-pointer transition hover:opacity-90' onClick={() => addItem(filteredProduct)}>Add to Cart</button>
         </div>
       </div>
     </section>
