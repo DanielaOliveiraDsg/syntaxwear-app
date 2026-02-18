@@ -8,13 +8,20 @@ export const ShoppingCart = () => {
   const [cartIsOpen, setCartIsOpen] = useState<boolean>(false);
   const {cart, removeItem, increment, decrement} = useContext(CartContext);
 
+  const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+
   return (
     <>
       <button
-        className="cursor-pointer"
+        className="relative cursor-pointer"
         onClick={() => setCartIsOpen(!cartIsOpen)}
       >
         <img src={IconCart} alt="Shopping cart icon" />
+        {totalItems > 0 && (
+          <span className="absolute -top-2 -right-3.5 bg-red-600 text-white text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center">
+            {totalItems}
+          </span>
+        )}
       </button>
 
       {/* Overlay */}

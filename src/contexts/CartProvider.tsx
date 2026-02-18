@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { Product } from '../interfaces/productInterface';
 import { CartContext } from './CartContext';
 
@@ -10,8 +10,22 @@ export interface ProductCart extends Product {
   quantity: number;
 }
 
+// standard form "@AppName:savedItem"
+const localStorageKey = '@SyntaxWear:cart';
+
 export const CartProvider = ({ children }: CartProviderProps) => {
-  const [cart, setCart] = useState<ProductCart[]>([]);
+  const [cart, setCart] = useState<ProductCart[]>(() => {
+    const cartFromLocalStorage = localStorage.getItem(localStorageKey);
+    return cartFromLocalStorage !== null
+      ? JSON.parse(cartFromLocalStorage)
+      : [];
+  });
+
+  // persisting items cart items selected
+  // dependency array [cart] -> side effect (localstorage) will run on moount and everytime the value in the array changes
+  useEffect(() => {
+    localStorage.setItem(localStorageKey, JSON.stringify(cart));
+  }, [cart]);
 
   // ---- add product ----
   function addItem(product: Product): void {
@@ -61,12 +75,11 @@ export const CartProvider = ({ children }: CartProviderProps) => {
 
     const newCart = cart.map((itemInCart) =>
       itemInCart.id === product.id
-      ? {...itemInCart, quantity: newQuantity}
-      : itemInCart
-    )
+        ? { ...itemInCart, quantity: newQuantity }
+        : itemInCart
+    );
 
-    setCart(newCart)
-
+    setCart(newCart);
   }
 
   return (
