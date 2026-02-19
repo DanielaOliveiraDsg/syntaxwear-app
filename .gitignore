@@ -16,9 +16,22 @@ dist-ssr
 .vscode/*
 !.vscode/extensions.json
 .idea
-.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# TanStack Router generated files
+.tanstack
+routeTree.gen.ts
+
+# macOS specific (System files)
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Database / Docker (since you use Prisma/OrbStack)
+.env
+.env.local
+.docker

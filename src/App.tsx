@@ -12,9 +12,11 @@ declare module '@tanstack/react-router' {
 
 function App() {
   return (
-    <CartProvider>
-      <RouterProvider router={router} />
-    </CartProvider>
+
+      <CartProvider>
+        <RouterProvider router={router} />
+      </CartProvider>
+
   );
 }
 
