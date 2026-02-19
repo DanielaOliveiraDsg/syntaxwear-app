@@ -36,7 +36,7 @@ export const Header = () => {
                 <Link to='/our-stores'>Our Stores</Link>
               </li>
               <li className="hidden md:block">
-                <a href="#">About</a>
+                <Link to='/about'>About</Link>
               </li>
               <li>
                 <Link to="/sign-in">
