@@ -1,10 +1,20 @@
 import Logo from '@/assets/images/logo/logo.svg';
 import IconUser from '@/assets/images/icons/icon-user.svg';
 import IconHelp from '@/assets/images/icons/icon-help.svg';
-
 import { Link } from '@tanstack/react-router';
 import { ShoppingCart } from '../ShoppingCart';
+import { MenuMobile } from '../MenuMobile';
 
+export interface NavLink {
+  name: string;
+  href: string;
+}
+
+const navLinks: NavLink[] = [
+  {name: "Men", href: "/products"},
+  {name: "Women", href: "/products"},
+  {name: "Outlet", href: "/products"},
+]
 export const Header = () => {
   return (
     <div className="relative">
@@ -17,34 +27,33 @@ export const Header = () => {
             <img src={Logo} alt="logo Syntaxwear" className="w-32 md:w-36" />
           </Link>
 
-          <nav className="hidden md:block">
+          <nav className="hidden lg:block">
             <ul className="flex gap-10">
-              <li>
-                <a href="#">Men</a>
-              </li>
-              <li>
-                <a href="#">Women</a>
-              </li>
-              <li>
-                <a href="#">Sale</a>
-              </li>
+              {navLinks.map((link) => (
+                <Link to={link.href} key={link.name}>
+                  {link.name}
+                </Link>
+              ))}
             </ul>
           </nav>
           <nav>
-            <ul className="flex gap-4 md:gap-10">
-              <li className="hidden md:block">
+            <ul className="flex gap-4 md:gap-10 items-center">
+              <li className="hidden lg:block">
                 <Link to='/our-stores'>Our Stores</Link>
               </li>
-              <li className="hidden md:block">
+              <li className="hidden lg:block">
                 <Link to='/about'>About</Link>
               </li>
-              <li>
+              <li className='lg:hidden'>
+                <MenuMobile navLinks={navLinks} />
+              </li>
+              <li className='hidden lg:block'>
                 <Link to="/sign-in">
                   <img src={IconUser} alt="user icon log-in" />
                 </Link>
               </li>
 
-              <li>
+              <li className='hidden lg:block'>
                 <a href="#">
                   <img src={IconHelp} alt="help icon" />
                 </a>
