@@ -1,8 +1,12 @@
-import Banner from "@/assets/images/banner/banner.jpg";
-import { Button } from "../Button";
-import { Overlay } from "../Overlay";
+import Banner from '@/assets/images/banner/banner.jpg';
+import { Button } from '../Button';
+import { Overlay } from '../Overlay';
+import { useRouter } from '@tanstack/react-router';
+
+
 
 export const Hero = () => {
+  const router = useRouter();
   return (
     <div className="container">
       <section className="h-125 rounded-[20px] mb-10 relative">
@@ -15,10 +19,18 @@ export const Hero = () => {
         <Overlay
           title="Krypton One"
           subtitle="Make every step your statement"
-          className= "bottom-0 justify-end px-6 md:px-24 pb-24 md:items-end"
+          className="bottom-0 justify-end px-6 md:px-24 pb-24 md:items-end"
         >
-          <Button variant="secondary" size="sm">
-            New Arrivals
+          <Button
+            variant="secondary"
+            size="sm"
+            onClick={() =>
+              router.navigate({
+                to: '/products'
+              })
+            }
+          >
+            Check Our Styles
           </Button>
 
           <Button>Shop</Button>

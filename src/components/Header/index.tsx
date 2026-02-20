@@ -11,9 +11,11 @@ export interface NavLink {
 }
 
 const navLinks: NavLink[] = [
-  {name: "Men", href: "/products"},
-  {name: "Women", href: "/products"},
-  {name: "Outlet", href: "/products"},
+  {name: "Men", href: "/products/category/mens"},
+  {name: "Women", href: "/products/category/womens"},
+  {name: "Outlet", href: "/products/category/outlet"},
+  {name: "Casual", href: "/products/category/casual"},
+  {name: "Modern", href: "/products/category/modern"},
 ]
 export const Header = () => {
   return (

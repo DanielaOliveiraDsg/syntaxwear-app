@@ -1,13 +1,15 @@
-import gridHighlight from "../../assets/images/products/grid-highlight.jpg";
-import gridSk8Purple from "../../assets/images/products/grid-sk8-puple.jpg";
-import gridModel from "../../assets/images/products/grid-model.jpg";
-import gridModern from "../../assets/images/products/grid-modern.jpg";
-import gridSk8Black from "../../assets/images/products/grid-sk8-black.jpg";
-import gridFuture from "../../assets/images/products/grid-future.jpg";
-import { Overlay } from "../Overlay";
-import { Button } from "../Button";
+import gridHighlight from '../../assets/images/products/grid-highlight.jpg';
+import gridSk8Purple from '../../assets/images/products/grid-sk8-puple.jpg';
+import gridModel from '../../assets/images/products/grid-model.jpg';
+import gridModern from '../../assets/images/products/grid-modern.jpg';
+import gridSk8Black from '../../assets/images/products/grid-sk8-black.jpg';
+import gridFuture from '../../assets/images/products/grid-future.jpg';
+import { Overlay } from '../Overlay';
+import { Button } from '../Button';
+import { useRouter } from '@tanstack/react-router';
 
 export const Gallery = () => {
+  const router = useRouter();
   return (
     <section className="w-full">
       <style>{`
@@ -15,7 +17,7 @@ export const Gallery = () => {
           display: grid;
           grid-template-columns: 1fr 1fr;
           grid-template-rows: repeat(5, auto);
-          grid-template-areas: 
+          grid-template-areas:
             "highlight highlight"
             "sk8-black sk8-black"
             "model modern"
@@ -55,7 +57,7 @@ export const Gallery = () => {
           .gallery-grid {
             grid-template-columns: repeat(4, 1fr);
             grid-template-rows: repeat(3, 300px);
-            grid-template-areas: 
+            grid-template-areas:
               "highlight highlight sk8-purple sk8-purple"
               "highlight highlight model modern"
               "sk8-black sk8-black model future";
@@ -82,8 +84,27 @@ export const Gallery = () => {
             subtitle="Street style with intension"
             className="inset-0 justify-center"
           >
-            <Button variant="secondary">Women</Button>
-            <Button>Men</Button>
+            <Button
+              variant="secondary"
+              onClick={() =>
+                router.navigate({
+                  to: '/products/category/$category',
+                  params: { category: 'womens' },
+                })
+              }
+            >
+              Women
+            </Button>
+            <Button
+              onClick={() =>
+                router.navigate({
+                  to: '/products/category/$category',
+                  params: { category: 'mens'},
+                })
+              }
+            >
+              Men
+            </Button>
           </Overlay>
         </div>
         <img
