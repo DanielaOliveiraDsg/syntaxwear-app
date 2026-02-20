@@ -3,6 +3,7 @@ import { products } from '../../../mocks/products';
 import { formatCurrency } from '../../../utils/formatCurrency';
 import { useContext } from 'react';
 import { CartContext } from '../../../contexts/CartContext';
+import { ZipCodeForm } from '../../../components/ZipCodeForm';
 
 // DINAMIC ROUTE FOR PRODUCT DETAIL
 
@@ -77,11 +78,7 @@ function RouteComponent() {
           <div className='my-6'>
             <p className='text-sm mb-1'>Calculate Shipping Cost
             </p>
-            <form className='flex gap-3'>
-              <input type="text" placeholder='Type your zipcode' className='border border-gray-500 rounded-md p-2' />
-
-              <button className='bg-[#6329A2] text-accent-light py-2 px-6 rounded-md cursor-pointer transition hover:opacity-90'>Calculate</button>
-            </form>
+            <ZipCodeForm />
           </div>
 
           <button className='bg-[#6329A2] text-accent-light w-full py-3 px-6 rounded-md cursor-pointer transition hover:opacity-90' onClick={() => addItem(filteredProduct)}>Add to Cart</button>
