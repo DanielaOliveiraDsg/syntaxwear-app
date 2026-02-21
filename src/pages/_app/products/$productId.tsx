@@ -19,7 +19,13 @@ function RouteComponent() {
     (product) => product.id === Number(productId)
   );
 
-  if(!filteredProduct) return;
+  if(!filteredProduct) return(
+    <section className="container mb-10 pt-44 md:pt-54 pb-10 md:px-10 text-gray-700 text-center min-h-[80vh] flex flex-col items-center justify-center">
+      <h1 className="text-2xl font-bold text-[#6329A2] mb-4">Product not found</h1>
+      <p className='text-gray-600 mb-6'>Sorry, the product you are looking for does not exist.</p>
+      <Link to='/products' className="text-[#6329A2] hover:underline">Back to Products</Link>
+    </section>
+  );
 
   const originalPrice = filteredProduct?.price ?? 0;
   const discountPrice = originalPrice * 0.9;

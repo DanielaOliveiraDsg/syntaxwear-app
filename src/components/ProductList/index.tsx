@@ -8,7 +8,7 @@ interface ProductListProps {
 // PRODUCTS LIST COMPONENT
 export const ProductList = ({ products }: ProductListProps) => {
   return (
-    <section className="grid grid-cols-[repeat(auto-fit,minmax(350px,1fr))] gap-4 mb-10">
+    <section className="grid grid-cols-[repeat(auto-fill,minmax(350px,1fr))] gap-4 xl:grid-cols-3 mb-10">
       {products.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
