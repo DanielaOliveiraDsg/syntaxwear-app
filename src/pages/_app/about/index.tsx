@@ -3,6 +3,11 @@ import bannerAbout from '../../../assets/images/banner/banner-our-stores.png';
 
 export const Route = createFileRoute('/_app/about/')({
   component: RouteComponent,
+  head: () => ({
+    meta: [
+      {title: 'About Us - SynstaxWear'}
+    ]
+  })
 });
 
 function RouteComponent() {

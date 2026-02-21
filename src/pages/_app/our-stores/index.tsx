@@ -4,6 +4,11 @@ import OurStores1 from '../../../assets/images/banner/loja-1.png';
 import OurStores2 from '../../../assets/images/banner/loja-2.png';
 export const Route = createFileRoute('/_app/our-stores/')({
   component: RouteComponent,
+  head: () => ({
+    meta: [
+      {title: 'Our Stores - SynstaxWear'}
+    ]
+  })
 });
 
 function RouteComponent() {

@@ -9,6 +9,18 @@ import { ZipCodeForm } from '../../../components/ZipCodeForm';
 
 export const Route = createFileRoute('/_app/products/$productId')({
   component: RouteComponent,
+  head: ({ params }) => {
+    const filteredProduct = products.find(
+      (product) => product.id === Number(params.productId)
+    );
+
+    const title = filteredProduct      ? `${filteredProduct.name} - SynstaxWear`
+      : 'Product not found - SynstaxWear';
+
+    return {
+      meta: [{ title }],
+    };
+  }
 });
 
 function RouteComponent() {
