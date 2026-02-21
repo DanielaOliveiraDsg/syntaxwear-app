@@ -1,8 +1,8 @@
 const menus = [
-  { title: "Masculine", items: ["Casual", "Sport", "Modern", "Futuristic"] },
-  { title: "Feminine", items: ["Casual", "Sport", "Modern", "Futuristic"] },
-  { title: "Outlet", items: ["Feminine", "Masculine"] },
-  { title: "About Us", items: ["Our story", "Work with us"] },
+  { title: 'Masculine', items: ['Casual', 'Sport', 'Modern', 'Futuristic'] },
+  { title: 'Feminine', items: ['Casual', 'Sport', 'Modern', 'Futuristic'] },
+  { title: 'Outlet', items: ['Feminine', 'Masculine'] },
+  { title: 'About Us', items: ['Our story', 'Work with us'] },
 ];
 
 export const MenuItems = () => {
@@ -18,7 +18,7 @@ export const MenuItems = () => {
               <li key={item}>
                 <a
                   href="#"
-                  className="font-medium hover:text-[#cccccc] transition-colors"
+                  className="font-medium hover:text-primary-hover transition-colors"
                 >
                   {item}
                 </a>

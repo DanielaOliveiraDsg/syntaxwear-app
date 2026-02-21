@@ -32,9 +32,12 @@ export const MenuMobile = ({ navLinks }: MenuMobileProps) => {
           onClick={(e) => e.stopPropagation()}
         >
           <header className="p-5">
-            <div className='flex justify-between items-center'>
+            <div className="flex justify-between items-center">
               <h1 className="text-[20px]">Hello, there!</h1>
-              <IoMdClose className='cursor-pointer text-2xl' onClick={() => setMenuIsOpen(false)}/>
+              <IoMdClose
+                className="cursor-pointer text-2xl"
+                onClick={() => setMenuIsOpen(false)}
+              />
             </div>
             <nav className="font-semibold hover:text-accent-hover">
               <Link to="/sign-in" className="flex items-center gap-3 mt-2">
@@ -62,7 +65,7 @@ export const MenuMobile = ({ navLinks }: MenuMobileProps) => {
           </ul>
 
           <footer className="absolute bottom-0 w-full h-[100px] p-4">
-            <button className="w-full mt-4 bg-[#6329A2] text-white py-3 px-4 rounded-md text-sm font-semibold uppercase cursor-pointer transition-all hover:bg-[#5433eb] focus:outline-none focus:ring-2 focus:ring-[#5433eb] disabled:opacity-50 disabled:cursor-not-allowed">
+            <button className="w-full mt-4 bg-primary text-white py-3 px-4 rounded-md text-sm font-semibold uppercase cursor-pointer transition-all hover:bg-accent focus:outline-none focus:ring-2 focus:ring-accent disabled:opacity-50 disabled:cursor-not-allowed">
               Check out
             </button>
           </footer>

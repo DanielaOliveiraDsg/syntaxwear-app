@@ -38,32 +38,34 @@ export const ZipCodeForm = () => {
   };
 
   return (
-    <div className='flex flex-col gap-4'>
-    <form className="flex gap-3 items-start" onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex flex-col">
-        <input
-          type="text"
-          placeholder="Type your zipcode"
-          className={`border border-gray-500 rounded-md p-2 ${errors.zipCode ? 'border-red-500' : ''}`}
-          {...register('zipCode')}
-        />
-        {errors.zipCode && (
-          <span className="text-sm text-red-600 mt-1">
-            {errors.zipCode.message}
-          </span>
-        )}
-      </div>
-
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="bg-[#6329A2] text-accent-light py-2 px-6 rounded-md cursor-pointer transition hover:opacity-90 disabled:opacity-60 self-start"
+    <div className="flex flex-col gap-4">
+      <form
+        className="flex gap-3 items-start"
+        onSubmit={handleSubmit(onSubmit)}
       >
-        Calculate
-      </button>
+        <div className="flex flex-col">
+          <input
+            type="text"
+            placeholder="Type your zipcode"
+            className={`border border-surface-alt0 rounded-md p-2 ${errors.zipCode ? 'border-red-500' : ''}`}
+            {...register('zipCode')}
+          />
+          {errors.zipCode && (
+            <span className="text-sm text-red-600 mt-1">
+              {errors.zipCode.message}
+            </span>
+          )}
+        </div>
 
-    </form>
-    {/* 3. Print out on screen */}
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="bg-primary text-accent-light py-2 px-6 rounded-md cursor-pointer transition hover:opacity-90 disabled:opacity-60 self-start"
+        >
+          Calculate
+        </button>
+      </form>
+      {/* 3. Print out on screen */}
       {shippingCost !== null && (
         <div className="animate-in fade-in duration-500">
           <p className="text-sm text-green-800">

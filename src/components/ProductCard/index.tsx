@@ -11,12 +11,14 @@ interface ProductCardProps {
 // INDIVIDUAL PRODUCT CARD COMPONENT
 
 export const ProductCard = ({ product }: ProductCardProps) => {
-
-  const {addItem} = useContext(CartContext)
+  const { addItem } = useContext(CartContext);
 
   return (
-    <div className="rounded-2xl bg-[#fafafa] shadow-md">
-      <Link to="/products/$productId" params={{ productId: String(product.id)}}>
+    <div className="rounded-2xl bg-surface shadow-md">
+      <Link
+        to="/products/$productId"
+        params={{ productId: String(product.id) }}
+      >
         <img
           src={product.image}
           alt={product.name}
@@ -24,7 +26,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         />
       </Link>
 
-      <div className="text-gray-800 rounded-2xl p-4">
+      <div className="text-text-secondary rounded-2xl p-4">
         <h3 className="text-lg font-semibold">{product.name}</h3>
         <p>{product.color}</p>
 

@@ -15,8 +15,8 @@ function RouteComponent() {
   );
 
   return (
-    <section className="container rounded-3xl pb-10 px-2 pt-40 md:pt-44 md:px-10 m text-gray-700 bg-surface my-10 min-h-[80vh] flex flex-col items-center justify-center">
-      <h1 className="text-center text-[#6329A2] text-3xl mb-3 p-2">
+    <section className="container rounded-3xl pb-10 px-2 pt-40 md:pt-44 md:px-10 m text-text-secondary bg-surface my-10 min-h-[80vh] flex flex-col items-center justify-center">
+      <h1 className="text-center text-primary text-3xl mb-3 p-2">
         Our Products
       </h1>
       <p className="text-center mb-10">
@@ -24,10 +24,12 @@ function RouteComponent() {
       </p>
       {filteredProducts.length === 0 ? (
         <>
-          <p className="text-center text-gray-500">
+          <p className="text-center text-surface-alt0">
             No products found in this category.
           </p>
-          <Link to='/products' className="text-[#6329A2] hover:underline">Back to Products</Link>
+          <Link to="/products" className="text-primary hover:underline">
+            Back to Products
+          </Link>
         </>
       ) : (
         <ProductList products={filteredProducts} />

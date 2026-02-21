@@ -2,8 +2,8 @@
 
 @theme {
   --color-background: hsl(0, 0%, 100%);
-  --color-surface: hsl(0, 0%, 96%);
-  --color-surface-alt: hsl(0, 0%, 93%);
+  --color-surface: hsl(0, 0%, 98%);
+  --color-surface-alt: hsl(0, 0%, 95%);
   --color-border: hsl(0, 0%, 80%);
   --color-border-alt: hsl(0, 0%, 73%);
   --color-gray-text: hsl(0, 0%, 40%);
