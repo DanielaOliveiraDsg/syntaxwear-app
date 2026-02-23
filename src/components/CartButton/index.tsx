@@ -11,7 +11,7 @@ export const CartButton = ({ onClick }: CartButtonProps) => {
   const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
   return (
     <button
-      className="relative cursor-pointer"
+      className="relative cursor-pointer flex items-center"
       onClick={onClick}
     >
       <img src={IconCart} alt="Shopping cart icon" />

@@ -21,7 +21,7 @@ export const CartDrawer = ({ isOpen, onClose }: cartDrawerProps) => {
     <>
       {/* Overlay */}
       <div
-        className={`${isOpen ? 'bg-black/70 visible' : 'bg-transparent invisible'} fixed inset-0 z-50 transition-all duration-500 ease-in-out`}
+        className={`${isOpen ? 'bg-black/70 visible' : 'bg-transparent invisible'} fixed inset-0 z-50 transition-all duration-600 ease-in-out`}
         onClick={onClose}
       >
         {/* drawer */}
