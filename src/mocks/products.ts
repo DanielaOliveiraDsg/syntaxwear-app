@@ -20,7 +20,7 @@ export const products = [
     price: 135,
     color: 'Natural Black/Royal blue',
     description:
-      'Tênis de performance feito em tecido respirável de fibra de árvore, com ótimo amortecimento e suporte. Ideal para treinos e uso diário, oferecendo conforto e estilo moderno.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     category: { id: 1, name: 'womens' },
   },
   {
@@ -30,7 +30,7 @@ export const products = [
     price: 110,
     color: 'Weathered Brown',
     description:
-      'Tênis leve e confortável produzido com tecido natural de eucalipto. Possui maciez no toque, respirabilidade e design versátil para acompanhar qualquer look casual.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     category: { id: 2, name: 'mens' },
   },
   {
@@ -40,7 +40,7 @@ export const products = [
     price: 100,
     color: 'Burgundy',
     description:
-      'Sapato feito com lã merino macia que mantém os pés aquecidos e confortáveis. Estiloso, resistente e perfeito para dias frios sem abrir mão do visual moderno.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     category: { id: 3, name: 'outlet' },
   },
   {
@@ -50,7 +50,7 @@ export const products = [
     price: 95,
     color: 'Dark Grey',
     description:
-      'Modelo slip-on em lã merino, fácil de calçar e extremamente confortável. Ideal para quem busca praticidade, estilo discreto e aquecimento natural.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     category: { id: 1, name: 'womens' },
   },
   {
@@ -60,7 +60,7 @@ export const products = [
     price: 140,
     color: 'Natural Black',
     description:
-      'Versão impermeável do Wool Cruiser, feita com lã merino tratada. Mantém os pés secos e aquecidos mesmo em dias chuvosos, sem perder o conforto e o estilo.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     category: { id: 2, name: 'mens' },
   },
   {
@@ -70,7 +70,7 @@ export const products = [
     price: 150,
     color: 'Medium Grey',
     description:
-      'Tênis resistente à água, feito em lã merino com ajuste confortável e respirável. Perfeito para quem busca proteção e estilo em qualquer clima.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     category: { id: 1, name: 'womens' },
   },
   {
@@ -80,7 +80,7 @@ export const products = [
     price: 160,
     color: 'Natural Black',
     description:
-      'Modelo de cano médio em lã merino, impermeável e elegante. Oferece estabilidade extra, conforto térmico e proteção ideal para dias frios e úmidos.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     category: { id: 2, name: 'mens' },
   },
   {
@@ -90,7 +90,7 @@ export const products = [
     price: 130,
     color: 'Rustic Green',
     description:
-      'Tênis robusto e moderno, feito para aventuras urbanas e ao ar livre. Combina resistência, conforto e design em um só produto versátil.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     category: { id: 3, name: 'outlet' },
   },
   {
@@ -100,7 +100,7 @@ export const products = [
     price: 140,
     color: 'Rustic Green',
     description:
-      'Sapato de cano médio com acabamento resistente e estilo aventureiro. Proporciona conforto prolongado e segurança em diferentes tipos de terreno.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     category: { id: 2, name: 'mens' },
   },
   {
@@ -110,7 +110,7 @@ export const products = [
     price: 100,
     color: 'Blizzard',
     description:
-      'Clássico e elegante, o Cruiser é feito em materiais premium que garantem conforto e durabilidade. Uma escolha versátil para qualquer ocasião.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     category: { id: 1, name: 'womens' },
   },
   {
@@ -120,7 +120,7 @@ export const products = [
     price: 200,
     color: 'Purple',
     description:
-      'lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     category: { id: 4, name: 'casual' },
   },
   {
@@ -130,7 +130,7 @@ export const products = [
     price: 200,
     color: 'White',
     description:
-      'lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     category: { id: 4, name: 'casual' },
   },
   {
@@ -140,7 +140,7 @@ export const products = [
     price: 130,
     color: 'Blue',
     description:
-      'lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     category: { id: 4, name: 'casual' },
   },
 ];

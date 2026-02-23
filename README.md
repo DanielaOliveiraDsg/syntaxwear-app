@@ -1,73 +1,96 @@
-# React + TypeScript + Vite
+# SyntaxWear - Modern E-commerce Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules
+SyntaxWear is a high-performance, responsive e-commerce application built with **React 19**, **TypeScript**, and **Vite**. It features a modern shopping experience with integrated cart management, dynamic product routing, and robust form validation.
 
-Currently, two official plugins are available:
+## 🚀 Key Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **🛍️ Complete Shopping Flow**: Browse products by category, view detailed product information, and manage your shopping cart.
+- **⚡ Fast Performance**: Powered by Vite for lightning-fast development and optimized production builds.
+- **🛣️ Advanced Routing**: Utilizes TanStack Router for type-safe navigation and nested layouts.
+- **🛒 Cart Management**: Global cart state management using React Context API.
+- **🎨 Modern UI**: Styled with Tailwind CSS v4 for a clean, responsive, and maintainable design.
+- **📝 Form Validation**: Secure and user-friendly forms implemented with React Hook Form and Zod validation.
+- **📱 Fully Responsive**: Optimized for desktop, tablet, and mobile devices.
+- **🔐 Auth Pages**: Includes pre-built layouts for user registration and login.
 
-## React Compiler
+## 🛠️ Technologies Used
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Core
+- **React 19**: Modern frontend library.
+- **TypeScript**: Static typing for enhanced developer experience and code quality.
+- **Vite**: Next-generation frontend tooling.
 
-## Expanding the ESLint configuration
+### State & Routing
+- **TanStack Router**: Type-safe routing and state management for URLs.
+- **Context API**: Global state for the shopping cart.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Styling & UI
+- **Tailwind CSS v4**: Utility-first CSS framework with native Vite support.
+- **React Icons**: Extensive icon library.
+- **Custom Fonts**: Integrated Ubuntu font family for brand consistency.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Forms & Validation
+- **React Hook Form**: Performant, flexible, and extensible forms.
+- **Zod**: TypeScript-first schema declaration and validation.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 📁 Project Structure
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+```text
+src/
+├── assets/          # Images, fonts, and static assets
+├── components/      # Reusable UI components (Button, Header, ProductCard, etc.)
+├── contexts/        # Global state management (CartContext)
+├── interfaces/      # TypeScript type definitions and interfaces
+├── mocks/           # Mock data for products and categories
+├── pages/           # Application routes and page layouts (TanStack Router)
+├── styles/          # Global CSS and Tailwind configurations
+├── utils/           # Helper functions (currency formatting, CPF validation)
+└── main.tsx         # Application entry point
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🏁 Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+### Prerequisites
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+- [Node.js](https://nodejs.org/) (latest LTS version recommended)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd syntaxwear-app
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+### Running the Application
+
+To start the development server:
+```bash
+npm run dev
 ```
+The application will be available at `http://localhost:5173`.
+
+### Building for Production
+
+To create a production-ready build:
+```bash
+npm run build
+```
+The optimized files will be generated in the `dist/` directory.
+
+### Linting
+
+To check for code quality issues:
+```bash
+npm run lint
+```
+
+## 📄 License
+
+This project is for educational purposes. All rights reserved.
