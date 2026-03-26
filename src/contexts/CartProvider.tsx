@@ -49,7 +49,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   }
 
   // ---- remove product ----
-  function removeItem(productId: number): void {
+  function removeItem(productId: string): void {
     const newCart = cart.filter((itemInCart) => itemInCart.id !== productId);
 
     setCart(newCart);

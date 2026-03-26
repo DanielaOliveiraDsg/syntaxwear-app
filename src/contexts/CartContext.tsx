@@ -5,7 +5,7 @@ import type { Product } from '../interfaces/productInterface';
 interface CartContextType {
   cart: ProductCart[];
   addItem: (product: Product) => void;
-  removeItem: (productId: number) => void;
+  removeItem: (productId: string) => void;
   increment: (product: ProductCart) => void;
   decrement: (product: ProductCart) => void;
 }

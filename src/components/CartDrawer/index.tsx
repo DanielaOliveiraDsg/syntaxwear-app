@@ -43,7 +43,7 @@ export const CartDrawer = ({ isOpen, onClose }: cartDrawerProps) => {
               </button>
             </header>
 
-            {/* Mock products, later will be done with Backend */}
+
             <ul className="p-4 flex-1 overflow-y-auto scrollbar-hide h-[calc(100%-140px)]">
               {cart.length === 0 ? (
                 <p className="text-center mt-10 text-gray-500">
@@ -64,14 +64,14 @@ export const CartDrawer = ({ isOpen, onClose }: cartDrawerProps) => {
 
                     <div className="flex items-center gap-4">
                       <img
-                        src={product.image}
+                        src={product.images[0]}
                         alt={product.name}
                         className="w-20 h-20 object-cover rounded"
                       />
                       <div className="flex-1">
                         <p className="font-medium">{product.name}</p>
                         <p className="text-primary font-bold">
-                          {formatCurrency(product.price)}
+                          {formatCurrency(product.price*product.quantity)}
                         </p>
 
                         <div className="flex items-center gap-4 mt-2">
@@ -82,7 +82,7 @@ export const CartDrawer = ({ isOpen, onClose }: cartDrawerProps) => {
                             >
                               -
                             </button>
-                            <span className="px-2 min-w-[20px] text-center">
+                            <span className="px-2 min-w-5 text-center">
                               {product.quantity}
                             </span>
                             <button

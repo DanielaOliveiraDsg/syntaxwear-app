@@ -1,11 +1,16 @@
 import type { Category } from "./category";
 
 export interface Product {
-  id: number;
+  id: string;
   name: string;
-  image: string;
-  price: number;
-  color: string;
   description: string;
-  category: Category;
+  price: number;
+  colors: string[];
+  stock: number;
+  sizes: string[];
+  images: string[];
+  categoryId: string;
+  active: boolean;
+  slug: string;
+  category?: Category;
 }
