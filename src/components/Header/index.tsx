@@ -9,16 +9,22 @@ import { useState } from 'react';
 
 export interface NavLink {
   name: string;
-  href: string;
+  to: string;
+  search?: { gender: 'MEN' | 'WOMEN' | 'UNISEX' };
+  params?: { category: string };
 }
 
 const navLinks: NavLink[] = [
-  { name: 'Men', href: '/products/category/mens' },
-  { name: 'Women', href: '/products/category/womens' },
-  { name: 'Outlet', href: '/products/category/outlet' },
-  { name: 'Casual', href: '/products/category/casual' },
-  { name: 'Modern', href: '/products/category/modern' },
+  // Genders use Search Params
+  { name: 'Men', to: '/products', search: { gender: 'MEN' } },
+  { name: 'Women', to: '/products', search: { gender: 'WOMEN' } },
+
+  // Styles use Path Params ($category)
+  { name: 'Casual', to: '/products/category/$category', params: { category: 'casual' } },
+  { name: 'Modern', to: '/products/category/$category', params: { category: 'modern' } },
+  { name: 'Sport', to: '/products/category/$category', params: { category: 'sport' } },
 ];
+
 export const Header = () => {
   const [cartIsOpen, setCartIsOpen] = useState<boolean>(false);
 
@@ -36,7 +42,12 @@ export const Header = () => {
           <nav className="hidden lg:block">
             <ul className="flex gap-10">
               {navLinks.map((link) => (
-                <Link to={link.href} key={link.name}>
+                <Link
+                  to={link.to}
+                  search={link.search}
+                  params={link.params}
+                  key={link.name}
+                >
                   {link.name}
                 </Link>
               ))}

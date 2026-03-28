@@ -52,7 +52,12 @@ export const MenuMobile = ({ navLinks }: MenuMobileProps) => {
             onClick={() => setMenuIsOpen(!menuIsOpen)}
           >
             {navLinks.map((link) => (
-              <Link to={link.href} key={link.name}>
+              <Link
+                key={link.name}
+                to={link.to}
+                search={link.search}
+                params={link.params}
+              >
                 {link.name}
               </Link>
             ))}

@@ -3,14 +3,17 @@ import type { Category } from "./category";
 export interface Product {
   id: string;
   name: string;
-  description: string;
-  price: number;
+  slug: string;
+  description?: string;
+  price: number; // Note: will handle the Decimal -> Number conversion
+  currency: string;
+  images: string[];
+  sizes: string[]; // Standardized for footwear
   colors: string[];
   stock: number;
-  sizes: string[];
-  images: string[];
-  categoryId: string;
   active: boolean;
-  slug: string;
-  category?: Category;
+  categoryId: string;
+  category?: Category; // when including the relation in the query
+  createdAt: string;
+  updatedAt: string;
 }

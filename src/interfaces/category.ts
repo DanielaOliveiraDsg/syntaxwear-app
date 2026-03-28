@@ -1,4 +1,9 @@
 export interface Category {
-  id: number;
+  id: string;
   name: string;
+  slug: string;
+  description?: string; // Optional in DB
+  active: boolean;
+  createdAt: string; // Dates become strings when serialized to JSON
+  updatedAt: string;
 }

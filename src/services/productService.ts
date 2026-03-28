@@ -8,20 +8,36 @@ const DEFAULT_LIMIT = 3;
 interface GetProductParams {
   page: number;
   limit?: number;
+  gender?: 'MEN' | 'WOMEN' | 'UNISEX';
+  categoryId?: string;
 }
 
 interface ProductResponse {
   products: Product[];
-  total: number;
-  page: number;
-  limit: number;
+  meta: { // Matching backend "meta" object structure
+    total: number;
+    page: number;
+    limit: number;
+    totalPages: number;
+  };
 }
-export async function getProducts({ page, limit = DEFAULT_LIMIT }: GetProductParams): Promise<ProductResponse> {
+
+// Fetch products with pagination
+export async function getProducts({
+  page,
+  limit = DEFAULT_LIMIT,
+  gender,
+  categoryId
+}: GetProductParams): Promise<ProductResponse> {
 
   const params = new URLSearchParams({
     page: page.toString(),
     limit: limit.toString(),
   });
+
+  if (gender) params.append('gender', gender);
+  if (categoryId) params.append('categoryId', categoryId);
+
   const url = `${API_BASE_URL}/products?${params.toString()}`;
 
   try {
@@ -29,15 +45,20 @@ export async function getProducts({ page, limit = DEFAULT_LIMIT }: GetProductPar
     if (!response.ok) {
       throw new Error(`Error fetching products: ${response.statusText}`);
     }
-    const data = await response.json();
-    return data;
+    return await response.json();
 
   } catch (error) {
-    if (error instanceof Error) {
-      throw error;
-    }
-
-    throw new Error('An unknown error occurred while fetching products.');
+    throw error instanceof Error ? error : new Error('An unknown error occurred');
   }
 
+}
+
+// Category helper (it can now just call getProducts)
+export async function getProductsByCategoryId(categoryId: string,
+  paginationParams: { page: number; limit?: number }
+): Promise<ProductResponse> {
+  return getProducts({
+    ...paginationParams,
+    categoryId
+  });
 }
