@@ -2,15 +2,13 @@ import { createFileRoute, Link } from '@tanstack/react-router';
 import { ProductList } from '../../../../components/ProductList';
 import { getProductsByCategoryId } from '../../../../services/productService';
 import { getCategoryByName } from '../../../../services/categoryService';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { Product } from '../../../../interfaces/productInterface';
 
 
 export const Route = createFileRoute('/_app/products/category/$category')({
   loader: async ({ params }) => {
     const category = await getCategoryByName(params.category);
-
-
     return { category };
   },
   component: RouteComponent,
@@ -39,24 +37,30 @@ function RouteComponent() {
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
 
-  const hasFetchedInitial = useRef(false); // to avoid rerendering on initial load
 
-  async function loadMore() {
-    if (loading || !hasMore) return;
+  async function loadMore(isNewCategory = false) {
+    if (loading || (!hasMore && !isNewCategory)) return;
 
     setLoading(true);
 
     try {
+      const currentPage = isNewCategory ? 1 : page;
+      const filteredProducts = await getProductsByCategoryId(category.id, { page: currentPage });
 
-      const filteredProducts = await getProductsByCategoryId(category.id, { page });
+      if (isNewCategory) {
+        setProducts(filteredProducts.products);
+        setPage(2);
+      } else {
+        setProducts((prev) => [...prev, ...filteredProducts.products]);
+        setPage((prev) => prev + 1);
+      }
 
-      setProducts((prev) => [...prev, ...filteredProducts.products]);
 
       // If the API returns an empty array, it means there are no more products to load
       if (filteredProducts.products.length < 1) {
         setHasMore(false);
       } else {
-        setPage((prev) => prev + 1);
+        setHasMore(true);
       }
     } catch (error) {
       console.error('Error loading products:', error);
@@ -66,10 +70,14 @@ function RouteComponent() {
     }
   }
   useEffect(() => {
-    if (hasFetchedInitial.current) return;
-    hasFetchedInitial.current = true;
-    loadMore();
-  }, []);
+    // Reset state for the new category
+    setProducts([]);
+    setPage(1);
+    setHasMore(true);
+
+    // Trigger the fresh load
+    loadMore(true);
+  }, [category.id]); //ensures it runs every time the category changes
 
   return (
     <section className="container rounded-3xl pb-10 px-2 pt-40 md:pt-44 md:px-10 m text-text-secondary bg-surface my-10 min-h-[80vh] flex flex-col items-center justify-center">
@@ -98,7 +106,7 @@ function RouteComponent() {
           {hasMore && (
             <button
               className="block cursor-pointer mx-auto mt-6 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              onClick={loadMore}
+              onClick={() =>loadMore(false)}
               disabled={loading}
             >
               {loading ? 'Loading...' : 'Load More'}
