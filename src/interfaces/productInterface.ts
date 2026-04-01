@@ -5,15 +5,16 @@ export interface Product {
   name: string;
   slug: string;
   description?: string;
-  price: number; // Note: will handle the Decimal -> Number conversion
+  gender: 'MEN' | 'WOMEN' | 'UNISEX';
+  price: number;
   currency: string;
   images: string[];
-  sizes: string[]; // Standardized for footwear
+  sizes: string[];
   colors: string[];
   stock: number;
   active: boolean;
   categoryId: string;
-  category?: Category; // when including the relation in the query
+  category?: Category; 
   createdAt: string;
   updatedAt: string;
 }

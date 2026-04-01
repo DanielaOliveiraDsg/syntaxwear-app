@@ -62,3 +62,16 @@ export async function getProductsByCategoryId(categoryId: string,
     categoryId
   });
 }
+
+// Fetch a single product by ID
+export async function getProductById(id: string): Promise<Product> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/products/${id}`);
+    if (!response.ok) {
+      throw new Error(`Product not found: ${response.statusText}`);
+    }
+    return await response.json();
+  } catch (error) {
+    throw error instanceof Error ? error : new Error('An unknown error occurred');
+  }
+}

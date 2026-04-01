@@ -18,6 +18,7 @@ const navLinks: NavLink[] = [
   // Genders use Search Params
   { name: 'Men', to: '/products', search: { gender: 'MEN' } },
   { name: 'Women', to: '/products', search: { gender: 'WOMEN' } },
+  { name: 'Unisex', to: '/products', search: { gender: 'UNISEX' } },
 
   // Styles use Path Params ($category)
   { name: 'Casual', to: '/products/category/$category', params: { category: 'casual' } },

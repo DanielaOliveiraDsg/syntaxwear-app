@@ -32,8 +32,6 @@ export const Hero = () => {
           >
             Check Our Styles
           </Button>
-
-          <Button>Shop</Button>
         </Overlay>
       </section>
     </div>

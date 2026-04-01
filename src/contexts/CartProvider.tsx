@@ -8,6 +8,7 @@ interface CartProviderProps {
 
 export interface ProductCart extends Product {
   quantity: number;
+  selectedSize?: string; // New optional property for selected size
 }
 
 // standard form "@AppName:savedItem"
@@ -28,16 +29,16 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   }, [cart]);
 
   // ---- add product ----
-  function addItem(product: Product): void {
+  function addItem(product: ProductCart): void {
     const productExistsInCart = cart.find(
-      (itemInCart) => itemInCart.id === product.id
+      (itemInCart) => itemInCart.id === product.id && itemInCart.selectedSize === product.selectedSize
     );
 
     let newCart;
 
     if (productExistsInCart) {
       newCart = cart.map((itemInCart) =>
-        itemInCart.id === product.id
+        itemInCart.id === product.id && itemInCart.selectedSize === product.selectedSize
           ? { ...itemInCart, quantity: itemInCart.quantity + 1 }
           : itemInCart
       );
@@ -49,8 +50,8 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   }
 
   // ---- remove product ----
-  function removeItem(productId: string): void {
-    const newCart = cart.filter((itemInCart) => itemInCart.id !== productId);
+  function removeItem(productId: string, size?: string): void {
+    const newCart = cart.filter((item) => !(item.id === productId && item.selectedSize === size));
 
     setCart(newCart);
   }
@@ -74,7 +75,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     if (!productExistsInCart) return;
 
     const newCart = cart.map((itemInCart) =>
-      itemInCart.id === product.id
+      itemInCart.id === product.id && itemInCart.selectedSize === product.selectedSize
         ? { ...itemInCart, quantity: newQuantity }
         : itemInCart
     );

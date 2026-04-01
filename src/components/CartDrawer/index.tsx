@@ -52,17 +52,17 @@ export const CartDrawer = ({ isOpen, onClose }: cartDrawerProps) => {
               ) : (
                 cart.map((product) => (
                   <li
-                    key={product.id}
+                    key={`${product.id}-${product.selectedSize}`} // Unique key for each product-size combination
                     className="flex flex-col gap-2 px-4 py-6 border-b"
                   >
                     <button
                       className="self-end text-gray-400 hover:text-error transition-colors"
-                      onClick={() => removeItem(product.id)}
+                      onClick={() => removeItem(product.id, product.selectedSize)}
                     >
                       X
                     </button>
 
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-3">
                       <img
                         src={product.images[0]}
                         alt={product.name}
@@ -72,6 +72,9 @@ export const CartDrawer = ({ isOpen, onClose }: cartDrawerProps) => {
                         <p className="font-medium">{product.name}</p>
                         <p className="text-primary font-bold">
                           {formatCurrency(product.price*product.quantity)}
+                        </p>
+                        <p className="text-sm text-primary">
+                          Size: {product.selectedSize}
                         </p>
 
                         <div className="flex items-center gap-4 mt-2">

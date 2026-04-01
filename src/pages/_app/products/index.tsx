@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { ProductList } from '../../../components/ProductList';
 import { getProducts } from '../../../services/productService';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { Product } from '../../../interfaces/productInterface';
 
 // PAGE PRODUCTS
@@ -15,8 +15,11 @@ type ProductSearch = {
 export const Route = createFileRoute('/_app/products/')({
   // Validate and provide default values for search params
   validateSearch: (search: Record<string, unknown>): ProductSearch => {
+    const g = search.gender as string | undefined;
     return {
-      gender: (search.gender as 'MEN' | 'WOMEN' | 'UNISEX') || undefined,
+      gender: (['MEN', 'WOMEN', 'UNISEX'].includes(g?.toUpperCase() || '')
+      ? (g?.toUpperCase() as 'MEN' | 'WOMEN' | 'UNISEX')
+      : undefined),
       page: Number(search.page) || 1,
     };
   },
@@ -35,66 +38,33 @@ function RouteComponent() {
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
 
-  // Use a ref to track the current gender
-  const currentGenderRef = useRef(gender);
 
-  async function loadProducts(
-    targetPage: number,
-    isNewFilter: boolean = false
-  ) {
+  async function fetchProducts(targetPage: number, reset: boolean = false) {
     if (loading) return;
-
     setLoading(true);
 
     try {
-      // Pass the gender filter to your service
       const response = await getProducts({
         page: targetPage,
-        gender: gender,
+        gender: gender, // This comes directly from TanStack Search Params
       });
 
-      if (isNewFilter) {
-        setProducts(response.products);
-      } else {
-        setProducts((prev) => [...prev, ...response.products]);
-      }
-
-      if (response.products.length < 1) {
-        setHasMore(false);
-      } else {
-        setPage(targetPage + 1);
-        setHasMore(response.meta.totalPages > targetPage);
-      }
+      setProducts((prev) => (reset ? response.products : [...prev, ...response.products]));
+      setHasMore(response.meta.page < response.meta.totalPages);
+      setPage(targetPage + 1);
     } catch (error) {
       console.error('Error loading products:', error);
-      setHasMore(false);
     } finally {
       setLoading(false);
     }
   }
   // Effect to handle initial load AND gender changes
   useEffect(() => {
-    const genderChanged = currentGenderRef.current !== gender;
-
-    if (genderChanged) {
-      // Update the ref to the new gender
-      currentGenderRef.current = gender;
-
-      // Reset local states
-      setProducts([]);
-      setHasMore(true);
-
-      // Fetch from page 1
-      loadProducts(1, true);
-    } else if (products.length === 0 && !loading) {
-      // handles the initial mount without a double-fetch
-      // because "loading" will be true during the second Strict Mode fire
-      loadProducts(1);
-    }
+    setProducts([]);
+    fetchProducts(1, true);
   }, [gender]);
 
-  const displayGender =
-    typeof gender === 'string' ? gender.split('?')[0].toLowerCase() : '';
+  const displayGender = (gender && typeof gender === 'string') ? gender.toLowerCase() : '';
 
   return (
     <section className="container rounded-3xl pb-10 px-2 pt-40 md:pt-44 md:px-10 m text-text-secondary bg-surface my-10">
@@ -118,7 +88,7 @@ function RouteComponent() {
           {hasMore && (
             <button
               className="block cursor-pointer mx-auto mt-6 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              onClick={() => loadProducts(page)}
+              onClick={() => fetchProducts(page)}
               disabled={loading}
             >
               {loading ? 'Loading...' : 'Load More'}

@@ -1,6 +1,7 @@
 const menus = [
-  { title: 'Masculine', items: ['Casual', 'Sport', 'Modern', 'Futuristic'] },
-  { title: 'Feminine', items: ['Casual', 'Sport', 'Modern', 'Futuristic'] },
+  { title: 'Masculine', items: ['Casual', 'Sport', 'Modern'] },
+  { title: 'Feminine', items: ['Casual', 'Sport', 'Modern'] },
+  { title: 'Unisex', items: ['Casual', 'Sport', 'Modern'] },
   { title: 'Outlet', items: ['Feminine', 'Masculine'] },
   { title: 'About Us', items: ['Our story', 'Work with us'] },
 ];
