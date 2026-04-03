@@ -41,13 +41,14 @@ export const Header = () => {
           </Link>
 
           <nav className="hidden lg:block">
-            <ul className="flex gap-10">
+            <ul className="flex gap-10 lg:text-lg">
               {navLinks.map((link) => (
                 <Link
                   to={link.to}
                   search={link.search}
                   params={link.params}
                   key={link.name}
+                  className='hover:text-primary-hover hover:opacity-75 transition-transform'
                 >
                   {link.name}
                 </Link>
@@ -55,28 +56,32 @@ export const Header = () => {
             </ul>
           </nav>
           <nav>
-            <ul className="flex gap-4 md:gap-10 items-center justify-center">
+            <ul className="flex gap-4 md:gap-10 items-center justify-center lg:text-lg ">
               <li className="hidden lg:block">
-                <Link to="/our-stores">Our Stores</Link>
+                <Link to="/our-stores" className='hover:opacity-75 transition-transform'>
+                  Our Stores
+                </Link>
               </li>
               <li className="hidden lg:block">
-                <Link to="/about">About</Link>
+                <Link to="/about" className='hover:opacity-75 transition-transform'>
+                  About
+                </Link>
               </li>
               <li className="lg:hidden">
                 <MenuMobile navLinks={navLinks} />
               </li>
-              <li className="hidden lg:block">
+              <li className="hidden lg:block hover:scale-110 transition-transform">
                 <Link to="/sign-in">
                   <img src={IconUser} alt="user icon log-in" />
                 </Link>
               </li>
 
-              <li className="hidden lg:block">
+              <li className="hidden lg:block hover:scale-110 transition-transform">
                 <a href="#">
                   <img src={IconHelp} alt="help icon" />
                 </a>
               </li>
-              <li>
+              <li className="hover:scale-110 transition-transform">
                 <CartButton onClick={() => setCartIsOpen(true)} />
               </li>
             </ul>

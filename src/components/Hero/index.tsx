@@ -1,4 +1,4 @@
-import Banner from '@/assets/images/banner/banner.jpg';
+import Banner from '../../assets/images/banner/banner-w.jpeg'
 import { Button } from '../Button';
 import { Overlay } from '../Overlay';
 import { useRouter } from '@tanstack/react-router';
@@ -17,9 +17,8 @@ export const Hero = () => {
         />
 
         <Overlay
-          title="Krypton One"
-          subtitle="Make every step your statement"
-          className="bottom-0 justify-end px-6 md:px-24 pb-24 md:items-end"
+          slogan="Make every step your statement"
+          className="bottom-0 justify-center px-4 md:pr-50 pb-24 md:justify-end"
         >
           <Button
             variant="secondary"

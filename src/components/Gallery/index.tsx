@@ -1,9 +1,9 @@
-import gridHighlight from '../../assets/images/products/grid-highlight.jpg';
-import gridSk8Purple from '../../assets/images/products/grid-sk8-puple.jpg';
-import gridModel from '../../assets/images/products/grid-model.jpg';
-import gridModern from '../../assets/images/products/grid-modern.jpg';
-import gridSk8Black from '../../assets/images/products/grid-sk8-black.jpg';
-import gridFuture from '../../assets/images/products/grid-future.jpg';
+import gridHighlight from '../../assets/images/products/grid-highlight-2.png';
+import gridBrown from '../../assets/images/products/grid-brown-1.png';
+import gridModel from '../../assets/images/products/grid-model.png';
+import gridModern from '../../assets/images/products/grid-modern.jpeg';
+import gridLilac from '../../assets/images/products/grid-lilac-1.jpeg';
+import gridSport from '../../assets/images/products/grid-sport-1.png';
 import { Overlay } from '../Overlay';
 import { Button } from '../Button';
 import { useRouter } from '@tanstack/react-router';
@@ -19,10 +19,10 @@ export const Gallery = () => {
           grid-template-rows: repeat(5, auto);
           grid-template-areas:
             "highlight highlight"
-            "sk8-black sk8-black"
+            "grid-brown grid-brown"
             "model modern"
-            "model future"
-            "sk8-purple sk8-purple";
+            "model sport"
+            "grid-lilac grid-lilac";
           gap: 10px;
         }
 
@@ -31,8 +31,8 @@ export const Gallery = () => {
           max-height: 494px;
         }
 
-        .gallery-sk8-purple {
-          grid-area: sk8-purple;
+        .gallery-lilac {
+          grid-area: grid-lilac;
           max-height: 190px;
         }
 
@@ -44,13 +44,13 @@ export const Gallery = () => {
           grid-area: modern;
         }
 
-        .gallery-sk8-black {
-          grid-area: sk8-black;
+        .gallery-brown {
+          grid-area: grid-brown;
           max-height: 190px;
         }
 
-        .gallery-future {
-          grid-area: future;
+        .gallery-sport {
+          grid-area: sport;
         }
 
         @media (min-width: 769px) {
@@ -58,15 +58,15 @@ export const Gallery = () => {
             grid-template-columns: repeat(4, 1fr);
             grid-template-rows: repeat(3, 300px);
             grid-template-areas:
-              "highlight highlight sk8-purple sk8-purple"
+              "highlight highlight grid-lilac grid-lilac"
               "highlight highlight model modern"
-              "sk8-black sk8-black model future";
+              "grid-brown grid-brown model sport";
             gap: 30px;
           }
 
           .gallery-highlight,
-          .gallery-sk8-black,
-          .gallery-sk8-purple {
+          .gallery-brown,
+          .gallery-lilac {
             max-height: none;
           }
         }
@@ -76,12 +76,10 @@ export const Gallery = () => {
         <div className="relative rounded-[20px] gallery-highlight">
           <img
             src={gridHighlight}
-            alt="Modelo masculino com tênis"
+            alt="3 models wearing sneakers"
             className="w-full h-full object-cover rounded-[20px]"
           />
           <Overlay
-            title="Krypton One"
-            subtitle="Street style with intension"
             className="inset-0 justify-center"
           >
             <Button
@@ -89,7 +87,7 @@ export const Gallery = () => {
               onClick={() =>
                 router.navigate({
                   to: '/products/category/$category',
-                  params: { category: 'womens' },
+                  params: { category: 'women' },
                 })
               }
             >
@@ -99,7 +97,7 @@ export const Gallery = () => {
               onClick={() =>
                 router.navigate({
                   to: '/products/category/$category',
-                  params: { category: 'mens'},
+                  params: { category: 'MEN'},
                 })
               }
             >
@@ -108,29 +106,29 @@ export const Gallery = () => {
           </Overlay>
         </div>
         <img
-          src={gridSk8Purple}
-          alt="Tênis roxo"
-          className="gallery-sk8-purple w-full h-full object-cover rounded-[20px]"
+          src={gridLilac}
+          alt="Lilac sneakers"
+          className="gallery-lilac w-full h-full object-cover rounded-[20px]"
         />
         <img
           src={gridModel}
-          alt="Modelo feminina"
+          alt="Female model wearing lilac sneakers"
           className="gallery-model w-full h-full object-cover rounded-[20px]"
         />
         <img
           src={gridModern}
-          alt="Tênis colorido"
+          alt="Modern sock styles off-white sneakers"
           className="gallery-modern w-full h-full object-cover rounded-[20px]"
         />
         <img
-          src={gridSk8Black}
-          alt="Tênis preto e branco"
-          className="gallery-sk8-black w-full h-full object-cover rounded-[20px]"
+          src={gridBrown}
+          alt="Brown suede sneakers"
+          className="gallery-brown w-full h-full object-cover rounded-[20px]"
         />
         <img
-          src={gridFuture}
-          alt="Tênis cinza"
-          className="gallery-future w-full h-full object-cover rounded-[20px]"
+          src={gridSport}
+          alt="Multicolored sport sneakers"
+          className="gallery-sport w-full h-full object-cover rounded-[20px]"
         />
       </div>
     </section>

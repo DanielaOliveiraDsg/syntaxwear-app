@@ -12,7 +12,7 @@ export const Route = createFileRoute('/_app/about/')({
 
 function RouteComponent() {
   return (
-    <section className="container px-8 lg:px-10 pt-40 pb-10 flex flex-col gap-15 lg:flex-row items-center">
+    <section className="container lg:px-10 lg:py-50 py-11 px-4 flex flex-col gap-15 lg:flex-row items-center">
       <div className='h-full lg:w-2/3'>
         <img
           src={bannerAbout}

@@ -1,11 +1,11 @@
-import casualWhite from "@/assets/images/products/casual-flat-white.jpg"
-import sportGrey from "@/assets/images/products/sport-grey.jpg"
-import modernColor from "@/assets/images/products/modern-colorfull.jpg"
-import futuristicSilver from "@/assets/images/products/futuristic-silver.jpg"
+import casualCateg from "../assets/images/products/men-casual-black-1.jpeg"
+import sportCateg from "../assets/images/products/women-sport-off-white.jpeg"
+import modernCateg from "../assets/images/products/unisex-modern-sock-black-1.jpeg"
+import allCateg from "../assets/images/products/unisex-modern-blue.jpeg"
 
 export const categories = [
-    {name: "Casual", image: casualWhite},
-    {name: "Sport", image: sportGrey},
-    {name: "Modern", image: modernColor},
-    {name: "Futuristic", image: futuristicSilver}
+    {name: "Casual", image: casualCateg},
+    {name: "Sport", image: sportCateg},
+    {name: "Modern", image: modernCateg},
+    {name: "All Styles", image: allCateg}
 ]
