@@ -1,11 +1,13 @@
 import Logo from '@/assets/images/logo/logo.svg';
 import IconUser from '@/assets/images/icons/icon-user.svg';
 import IconHelp from '@/assets/images/icons/icon-help.svg';
-import { Link } from '@tanstack/react-router';
+import { Link, useNavigate } from '@tanstack/react-router';
 import { MenuMobile } from '../MenuMobile';
 import { CartButton } from '../CartButton';
 import { CartDrawer } from '../CartDrawer';
 import { useState } from 'react';
+import { useAuth } from '../../contexts/AuthContext/AuthContext';
+import { PiSignOut } from 'react-icons/pi';
 
 export interface NavLink {
   name: string;
@@ -28,6 +30,17 @@ const navLinks: NavLink[] = [
 
 export const Header = () => {
   const [cartIsOpen, setCartIsOpen] = useState<boolean>(false);
+  const {isAuthenticated, logout} = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogOut = async () => {
+    try {
+      await logout();
+      navigate({to: '/'})
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
+  }
 
   return (
     <div className="relative">
@@ -71,9 +84,15 @@ export const Header = () => {
                 <MenuMobile navLinks={navLinks} />
               </li>
               <li className="hidden lg:block hover:scale-110 transition-transform">
-                <Link to="/sign-in">
+                {isAuthenticated ? (
+                  <button onClick={handleLogOut} className='cursor-pointer hover:opacity-70 transition-opacity flex items-center gap-2'>
+                    Log out
+                    <PiSignOut className='w-5 h-5'/>
+                  </button>
+                ):(<Link to="/sign-in">
                   <img src={IconUser} alt="user icon log-in" />
-                </Link>
+                </Link>)}
+
               </li>
 
               <li className="hidden lg:block hover:scale-110 transition-transform">

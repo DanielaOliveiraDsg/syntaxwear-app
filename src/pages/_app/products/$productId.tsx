@@ -2,7 +2,7 @@ import { createFileRoute, Link } from '@tanstack/react-router';
 import { getProductById } from '../../../services/productService'; // service api call
 import { formatCurrency } from '../../../utils/formatCurrency';
 import { useContext, useState } from 'react';
-import { CartContext } from '../../../contexts/CartContext';
+import { CartContext } from '../../../contexts/CartContext/CartContext';
 import { ZipCodeForm } from '../../../components/ZipCodeForm';
 import { ProductCarousel } from '../../../components/ProductCarousel';
 

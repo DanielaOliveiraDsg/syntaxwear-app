@@ -1,9 +1,31 @@
-import { useRegisterForm } from '../RegisterForm/register-form.schema';
+import { useState } from 'react';
+import { useAuth } from '../../contexts/AuthContext/AuthContext';
+import { useLoginForm, type LoginUserFormData } from './login-form.schema';
+import { useNavigate } from '@tanstack/react-router';
 
 export const LoginForm = () => {
-  const { register, errors, isSubmitting } = useRegisterForm();
+  const { register, errors, isSubmitting, handleSubmit } = useLoginForm();
+  const [error, setError] = useState<string | null>(null);
+
+  const { login } = useAuth();
+
+  const navigate  = useNavigate();
+
+  const onSubmit = async (data: LoginUserFormData) => {
+    try {
+      await login(data);
+      navigate({ to: '/' });
+    } catch (error) {
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError('An unknown error occurred during login.');
+      }
+    }
+  };
+
   return (
-    <form className="text-primary">
+    <form className="text-primary" onSubmit={handleSubmit(onSubmit)}>
       <div>
         <label className="text-xs text-gray-600">E-mail*</label>
         <input
@@ -34,6 +56,7 @@ export const LoginForm = () => {
           </span>
         )}
       </div>
+      {error && <span className="text-xs text-red-600 mt-1 text-center">{error}</span>}
       <button
         type="submit"
         className="w-full mt-4 bg-primary text-white py-3 px-4 rounded-md text-sm font-semibold uppercase cursor-pointer transition-all hover:bg-accent focus:outline-none focus:ring-2 focus:ring-accent disabled:opacity-50 disabled:cursor-not-allowed"

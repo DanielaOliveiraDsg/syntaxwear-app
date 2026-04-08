@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import IconBurger from '../../assets/images/icons/icon-burger.svg';
-import { Link } from '@tanstack/react-router';
+import { Link, useNavigate } from '@tanstack/react-router';
 import { FaRegUserCircle } from 'react-icons/fa';
 import type { NavLink } from '../Header';
 import { IoMdClose } from 'react-icons/io';
+import { useAuth } from '../../contexts/AuthContext/AuthContext';
+import { PiSignOut} from 'react-icons/pi';
 
 interface MenuMobileProps {
   navLinks: NavLink[];
@@ -11,6 +13,17 @@ interface MenuMobileProps {
 
 export const MenuMobile = ({ navLinks }: MenuMobileProps) => {
   const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
+  const navigate = useNavigate();
+  const { isAuthenticated, user, logout } = useAuth();
+
+  const handleLogOut = async () => {
+    try {
+      await logout();
+      navigate({to: '/'})
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
+  }
 
   return (
     <>
@@ -33,7 +46,8 @@ export const MenuMobile = ({ navLinks }: MenuMobileProps) => {
         >
           <header className="p-5">
             <div className="flex justify-between items-center">
-              <h1 className="text-[20px]">Hello, there!</h1>
+              {/* <h1 className="text-[20px]">Welcome!</h1> */}
+              {isAuthenticated ? <h1 className="text-[20px]">Welcome back!</h1> : <h1 className="text-[20px]">Hi, there!</h1>}
               <IoMdClose
                 className="cursor-pointer text-2xl"
                 onClick={() => setMenuIsOpen(false)}
@@ -42,7 +56,7 @@ export const MenuMobile = ({ navLinks }: MenuMobileProps) => {
             <nav className="font-semibold hover:text-accent-hover">
               <Link to="/sign-in" className="flex items-center gap-3 mt-2">
                 <FaRegUserCircle className="h-6 w-6" />
-                <p>Log in</p>
+                {isAuthenticated ? <p>Hello, {user?.firstName}</p> : <p>Log in</p>}
               </Link>
             </nav>
           </header>
@@ -67,6 +81,15 @@ export const MenuMobile = ({ navLinks }: MenuMobileProps) => {
             <li>
               <Link to="/about">About</Link>
             </li>
+            {isAuthenticated && (
+              <li>
+                <button onClick={handleLogOut} className='cursor-pointer hover:opacity-70 transition-opacity flex items-center gap-2'>
+                  Log out
+                  <PiSignOut className='w-5 h-5'/>
+                </button>
+              </li>
+            )}
+
           </ul>
 
           <footer className="absolute bottom-0 w-full h-[100px] p-4">
