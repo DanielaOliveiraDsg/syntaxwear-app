@@ -9,6 +9,7 @@ export const Route = createFileRoute("/_app")({
 function AppLayout() {
   return (
     <div>
+      
       <Header />
       <Outlet />
       <Footer />

@@ -79,15 +79,13 @@ export const Gallery = () => {
             alt="3 models wearing sneakers"
             className="w-full h-full object-cover rounded-[20px]"
           />
-          <Overlay
-            className="inset-0 justify-center"
-          >
+          <Overlay className="inset-0 justify-center">
             <Button
               variant="secondary"
               onClick={() =>
                 router.navigate({
-                  to: '/products/category/$category',
-                  params: { category: 'women' },
+                  to: '/products',
+                  search: { gender: 'WOMEN', page: 1 }, // search to query params
                 })
               }
             >
@@ -96,8 +94,8 @@ export const Gallery = () => {
             <Button
               onClick={() =>
                 router.navigate({
-                  to: '/products/category/$category',
-                  params: { category: 'MEN'},
+                  to: '/products',
+                  search: { gender: 'MEN', page: 1 },
                 })
               }
             >
