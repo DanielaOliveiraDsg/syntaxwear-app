@@ -22,9 +22,9 @@ export interface RegisterInput extends Credentials {
 export interface AuthContextType {
   user: User | null;
   isAuthenticated: boolean;
-  login: (credentials: Credentials) => Promise<void>;
-  register: (input: RegisterInput) => Promise<void>;
-  logout: () => Promise<void>;
+  logIn: (credentials: Credentials) => Promise<void>;
+  signUp: (input: RegisterInput) => Promise<void>;
+  logOut: () => Promise<void>;
   signInWithGoogle: (credential: string) => Promise<void>;
   // loading: boolean;
 }

@@ -3,11 +3,19 @@ import { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext/AuthContext';
 import { useNavigate } from '@tanstack/react-router';
 
-export const GoogleAuthButton = () => {
+type GoogleAuthButtonProps = {
+  mode?: 'signin' | 'signup';
+};
+
+export const GoogleAuthButton = ({
+  mode = 'signin',
+}: GoogleAuthButtonProps) => {
   const [googleError, setGoogleError] = useState<string | null>(null);
   const [, setIsLoadingGoogle] = useState(false);
   const { signInWithGoogle } = useAuth();
   const navigate = useNavigate();
+
+  const buttonText = mode === 'signup' ? 'signup_with' : 'signin_with';
 
   const handleSuccess = async (
     credentialResponse: CredentialResponse
@@ -45,7 +53,11 @@ export const GoogleAuthButton = () => {
 
   return (
     <>
-      <GoogleLogin onSuccess={handleSuccess} onError={handleError} />
+      <GoogleLogin
+        onSuccess={handleSuccess}
+        onError={handleError}
+        text={buttonText}
+      />
       {googleError && (
         <p className="text-sm text-red-500 text-center mt-4">{googleError}</p>
       )}

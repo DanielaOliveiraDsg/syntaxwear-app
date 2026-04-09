@@ -21,7 +21,7 @@ function RouteComponent() {
         <LoginForm />
         <Separator />
 
-        <GoogleAuthButton />
+        <GoogleAuthButton mode="signin" />
 
         <p className="text-sm text-text-secondary text-center mt-4">
           Don't have an account?{' '}

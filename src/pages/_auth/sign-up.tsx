@@ -18,7 +18,7 @@ function RouteComponent() {
         <Logo />
         <RegisterForm />
         <Separator />
-        <GoogleAuthButton />
+        <GoogleAuthButton mode="signup" />
 
         <p className="text-sm text-text-secondary text-center mt-4">
           Already have an account?{' '}

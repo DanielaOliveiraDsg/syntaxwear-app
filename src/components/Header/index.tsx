@@ -30,12 +30,12 @@ const navLinks: NavLink[] = [
 
 export const Header = () => {
   const [cartIsOpen, setCartIsOpen] = useState<boolean>(false);
-  const {isAuthenticated, logout} = useAuth();
+  const {isAuthenticated, logOut} = useAuth();
   const navigate = useNavigate();
 
   const handleLogOut = async () => {
     try {
-      await logout();
+      await logOut();
       navigate({to: '/'})
     } catch (error) {
       console.error('Error logging out:', error);

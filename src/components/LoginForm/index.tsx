@@ -4,22 +4,33 @@ import { useLoginForm, type LoginUserFormData } from './login-form.schema';
 import { useNavigate } from '@tanstack/react-router';
 
 export const LoginForm = () => {
-  const { register, errors, isSubmitting, handleSubmit } = useLoginForm();
-  const [error, setError] = useState<string | null>(null);
+  const { register, errors, isSubmitting, handleSubmit, setError: setFormError } = useLoginForm();
+  const [serverError, setServerError] = useState<string | null>(null);
 
-  const { login } = useAuth();
+  const { logIn } = useAuth();
 
-  const navigate  = useNavigate();
+  const navigate = useNavigate();
 
   const onSubmit = async (data: LoginUserFormData) => {
+    setServerError(null);
+
     try {
-      await login(data);
+      await logIn(data);
       navigate({ to: '/' });
     } catch (error) {
       if (error instanceof Error) {
-        setError(error.message);
+        const message = error.message;
+        const lowerMessage = message.toLowerCase();
+
+        if (lowerMessage.includes('password')) {
+          setFormError('password', { type: 'server', message });
+        } else if (lowerMessage.includes('email')) {
+          setFormError('email', { type: 'server', message });
+        } else {
+          setServerError(message);
+        }
       } else {
-        setError('An unknown error occurred during login.');
+        setServerError('An unknown error occurred during login.');
       }
     }
   };
@@ -56,7 +67,7 @@ export const LoginForm = () => {
           </span>
         )}
       </div>
-      {error && <span className="text-xs text-red-600 mt-1 text-center">{error}</span>}
+
       <button
         type="submit"
         className="w-full mt-4 bg-primary text-white py-3 px-4 rounded-md text-sm font-semibold uppercase cursor-pointer transition-all hover:bg-accent focus:outline-none focus:ring-2 focus:ring-accent disabled:opacity-50 disabled:cursor-not-allowed"
@@ -64,6 +75,9 @@ export const LoginForm = () => {
       >
         {isSubmitting ? 'Submitting...' : 'Continue'}
       </button>
+      {serverError && (
+        <p className="text-xs text-red-600 mt-1 text-center">{serverError}</p>
+      )}
     </form>
   );
 };

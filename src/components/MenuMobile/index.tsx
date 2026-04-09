@@ -14,11 +14,11 @@ interface MenuMobileProps {
 export const MenuMobile = ({ navLinks }: MenuMobileProps) => {
   const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
   const navigate = useNavigate();
-  const { isAuthenticated, user, logout } = useAuth();
+  const { isAuthenticated, user, logOut } = useAuth();
 
   const handleLogOut = async () => {
     try {
-      await logout();
+      await logOut();
       navigate({to: '/'})
     } catch (error) {
       console.error('Error logging out:', error);
