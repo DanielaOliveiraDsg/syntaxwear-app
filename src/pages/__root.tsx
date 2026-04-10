@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { HeadContent, Outlet, createRootRoute } from '@tanstack/react-router'
+import { HeadContent, Link, Outlet, createRootRoute } from '@tanstack/react-router'
 
 export const Route = createRootRoute({
   component: RootComponent,
@@ -7,7 +7,15 @@ export const Route = createRootRoute({
     meta: [
       {title: 'Home - SynstaxWear'}
     ]
-  })
+  }),
+  notFoundComponent: () => {
+    return (
+      <div className="pt-40 text-center">
+        <h1>404 - Page Not Found</h1>
+        <Link to="/">Go Home</Link>
+      </div>
+    )
+  }
 })
 
 function RootComponent() {

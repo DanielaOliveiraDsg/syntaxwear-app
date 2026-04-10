@@ -79,7 +79,7 @@ export const MenuMobile = ({ navLinks }: MenuMobileProps) => {
               <Link to="/our-stores">Our Stores</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/about-us">About Us</Link>
             </li>
             {isAuthenticated && (
               <li>

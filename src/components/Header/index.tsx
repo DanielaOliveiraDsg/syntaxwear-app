@@ -76,11 +76,11 @@ export const Header = () => {
                 </Link>
               </li>
               <li className="hidden lg:block">
-                <Link to="/about" className='hover:opacity-75 transition-transform'>
-                  About
+                <Link to="/about-us" className='hover:opacity-75 transition-transform'>
+                  About Us
                 </Link>
               </li>
-              <li className="lg:hidden">
+              <li className="lg:hidden h-5">
                 <MenuMobile navLinks={navLinks} />
               </li>
               <li className="hidden lg:block hover:scale-110 transition-transform">

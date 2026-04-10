@@ -7,13 +7,12 @@ const socialIcons = [
   { href: "#", icon: IconInstagram, name: "Instagram" },
   { href: "#", icon: IconFacebook, name: "Facebook" },
   { href: "#", icon: IconTiktok, name: "TikTok" },
-  { href: "#", icon: IconWhatsapp, name: "IWhatsApp" },
+  { href: "#", icon: IconWhatsapp, name: "WhatsApp" },
 ];
 
 export const SocialMedia = () => {
   return (
-    <div>
-      <p className="mb-4 text-xl font-medium text-surface-alt">Social Media</p>
+    <div className="ml-5">
       <ul className="flex gap-5">
         {socialIcons.map(({ href, icon, name }) => (
           <li key={name}>

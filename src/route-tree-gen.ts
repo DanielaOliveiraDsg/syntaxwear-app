@@ -15,7 +15,7 @@ import { Route as AuthSignUpRouteImport } from './pages/_auth/sign-up'
 import { Route as AuthSignInRouteImport } from './pages/_auth/sign-in'
 import { Route as AppProductsIndexRouteImport } from './pages/_app/products/index'
 import { Route as AppOurStoresIndexRouteImport } from './pages/_app/our-stores/index'
-import { Route as AppAboutIndexRouteImport } from './pages/_app/about/index'
+import { Route as AppAboutUsIndexRouteImport } from './pages/_app/about-us/index'
 import { Route as AppProductsProductIdRouteImport } from './pages/_app/products/$productId'
 import { Route as AppProductsCategoryCategoryRouteImport } from './pages/_app/products/category/$category'
 
@@ -48,9 +48,9 @@ const AppOurStoresIndexRoute = AppOurStoresIndexRouteImport.update({
   path: '/our-stores/',
   getParentRoute: () => AppLayoutRoute,
 } as any)
-const AppAboutIndexRoute = AppAboutIndexRouteImport.update({
-  id: '/about/',
-  path: '/about/',
+const AppAboutUsIndexRoute = AppAboutUsIndexRouteImport.update({
+  id: '/about-us/',
+  path: '/about-us/',
   getParentRoute: () => AppLayoutRoute,
 } as any)
 const AppProductsProductIdRoute = AppProductsProductIdRouteImport.update({
@@ -70,7 +70,7 @@ export interface FileRoutesByFullPath {
   '/sign-in': typeof AuthSignInRoute
   '/sign-up': typeof AuthSignUpRoute
   '/products/$productId': typeof AppProductsProductIdRoute
-  '/about/': typeof AppAboutIndexRoute
+  '/about-us/': typeof AppAboutUsIndexRoute
   '/our-stores/': typeof AppOurStoresIndexRoute
   '/products/': typeof AppProductsIndexRoute
   '/products/category/$category': typeof AppProductsCategoryCategoryRoute
@@ -80,7 +80,7 @@ export interface FileRoutesByTo {
   '/sign-up': typeof AuthSignUpRoute
   '/': typeof AppIndexRoute
   '/products/$productId': typeof AppProductsProductIdRoute
-  '/about': typeof AppAboutIndexRoute
+  '/about-us': typeof AppAboutUsIndexRoute
   '/our-stores': typeof AppOurStoresIndexRoute
   '/products': typeof AppProductsIndexRoute
   '/products/category/$category': typeof AppProductsCategoryCategoryRoute
@@ -92,7 +92,7 @@ export interface FileRoutesById {
   '/_auth/sign-up': typeof AuthSignUpRoute
   '/_app/': typeof AppIndexRoute
   '/_app/products/$productId': typeof AppProductsProductIdRoute
-  '/_app/about/': typeof AppAboutIndexRoute
+  '/_app/about-us/': typeof AppAboutUsIndexRoute
   '/_app/our-stores/': typeof AppOurStoresIndexRoute
   '/_app/products/': typeof AppProductsIndexRoute
   '/_app/products/category/$category': typeof AppProductsCategoryCategoryRoute
@@ -104,7 +104,7 @@ export interface FileRouteTypes {
     | '/sign-in'
     | '/sign-up'
     | '/products/$productId'
-    | '/about/'
+    | '/about-us/'
     | '/our-stores/'
     | '/products/'
     | '/products/category/$category'
@@ -114,7 +114,7 @@ export interface FileRouteTypes {
     | '/sign-up'
     | '/'
     | '/products/$productId'
-    | '/about'
+    | '/about-us'
     | '/our-stores'
     | '/products'
     | '/products/category/$category'
@@ -125,7 +125,7 @@ export interface FileRouteTypes {
     | '/_auth/sign-up'
     | '/_app/'
     | '/_app/products/$productId'
-    | '/_app/about/'
+    | '/_app/about-us/'
     | '/_app/our-stores/'
     | '/_app/products/'
     | '/_app/products/category/$category'
@@ -181,11 +181,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppOurStoresIndexRouteImport
       parentRoute: typeof AppLayoutRoute
     }
-    '/_app/about/': {
-      id: '/_app/about/'
-      path: '/about'
-      fullPath: '/about/'
-      preLoaderRoute: typeof AppAboutIndexRouteImport
+    '/_app/about-us/': {
+      id: '/_app/about-us/'
+      path: '/about-us'
+      fullPath: '/about-us/'
+      preLoaderRoute: typeof AppAboutUsIndexRouteImport
       parentRoute: typeof AppLayoutRoute
     }
     '/_app/products/$productId': {
@@ -208,7 +208,7 @@ declare module '@tanstack/react-router' {
 interface AppLayoutRouteChildren {
   AppIndexRoute: typeof AppIndexRoute
   AppProductsProductIdRoute: typeof AppProductsProductIdRoute
-  AppAboutIndexRoute: typeof AppAboutIndexRoute
+  AppAboutUsIndexRoute: typeof AppAboutUsIndexRoute
   AppOurStoresIndexRoute: typeof AppOurStoresIndexRoute
   AppProductsIndexRoute: typeof AppProductsIndexRoute
   AppProductsCategoryCategoryRoute: typeof AppProductsCategoryCategoryRoute
@@ -217,7 +217,7 @@ interface AppLayoutRouteChildren {
 const AppLayoutRouteChildren: AppLayoutRouteChildren = {
   AppIndexRoute: AppIndexRoute,
   AppProductsProductIdRoute: AppProductsProductIdRoute,
-  AppAboutIndexRoute: AppAboutIndexRoute,
+  AppAboutUsIndexRoute: AppAboutUsIndexRoute,
   AppOurStoresIndexRoute: AppOurStoresIndexRoute,
   AppProductsIndexRoute: AppProductsIndexRoute,
   AppProductsCategoryCategoryRoute: AppProductsCategoryCategoryRoute,

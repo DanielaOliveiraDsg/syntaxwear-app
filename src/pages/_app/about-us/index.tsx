@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import bannerAbout from '../../../assets/images/banner/banner-our-stores.png';
 
-export const Route = createFileRoute('/_app/about/')({
+export const Route = createFileRoute('/_app/about-us/')({
   component: RouteComponent,
   head: () => ({
     meta: [

@@ -1,30 +1,56 @@
+import { Link } from '@tanstack/react-router';
+
 const menus = [
-  { title: 'Masculine', items: ['Casual', 'Sport', 'Modern'] },
-  { title: 'Feminine', items: ['Casual', 'Sport', 'Modern'] },
-  { title: 'Unisex', items: ['Casual', 'Sport', 'Modern'] },
-  { title: 'Outlet', items: ['Feminine', 'Masculine'] },
-  { title: 'About Us', items: ['Our story', 'Work with us'] },
+  { title: 'Gender', items: ['Women', 'Men', 'Unisex'] },
+  { title: 'Categories', items: ['Casual', 'Sport', 'Modern'] },
+  { title: 'About', items: ['About Us', 'Our Stores'] },
 ];
 
 export const MenuItems = () => {
+  const getLinkProps = (title: string, item: string) => {
+    if (title === 'Gender') {
+      return {
+        to: '/products' as const,
+        search: {
+          gender: item.toUpperCase() as 'MEN' | 'WOMEN' | 'UNISEX',
+          page: 1,
+        },
+      };
+    }
+
+    if (title === 'Categories') {
+      return {
+        to: '/products/category/$category' as const,
+        params: { category: item.toLowerCase() },
+      };
+    }
+    if (title === 'About') {
+      if (item === 'About Us') return { to: '/about-us' as const };
+      if (item === 'Our Stores') return { to: '/our-stores' as const };
+    }
+
+    return { to: '/' as const };
+  };
+
   return (
-    <div className="flex flex-col sm:flex-row gap-8">
+    <div className="flex gap-12 lg:gap-25 lg:mx-0 justify-between mt-7 mx-5">
       {menus.map(({ title, items }) => (
         <nav key={title}>
           <ul className="flex flex-col gap-4">
-            <li>
-              <p className="font-normal text-surface-alt text-xl">{title}</p>
-            </li>
-            {items.map((item) => (
-              <li key={item}>
-                <a
-                  href="#"
-                  className="font-medium hover:text-primary-hover transition-colors"
-                >
-                  {item}
-                </a>
-              </li>
-            ))}
+            {items.map((item) => {
+              const linkProps = getLinkProps(title, item);
+
+              return (
+                <li key={item}>
+                  <Link
+                    {...linkProps}
+                    className="font-medium text-gray-light hover:opacity-70 transition-opacity cursor-pointer"
+                  >
+                    {item}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </nav>
       ))}
