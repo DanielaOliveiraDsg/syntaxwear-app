@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       try {
         const response = await fetch('http://localhost:3000/auth/profile', {
           method: 'GET',
-          credentials: 'include', // Include cookies in the request
+          credentials: 'include', 
         });
         if (!response.ok) {
           throw new Error('Failed to fetch user profile');

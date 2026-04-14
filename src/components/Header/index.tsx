@@ -1,6 +1,5 @@
 import Logo from '@/assets/images/logo/logo.svg';
 import IconUser from '@/assets/images/icons/icon-user.svg';
-import IconHelp from '@/assets/images/icons/icon-help.svg';
 import { Link, useNavigate } from '@tanstack/react-router';
 import { MenuMobile } from '../MenuMobile';
 import { CartButton } from '../CartButton';
@@ -93,12 +92,6 @@ export const Header = () => {
                   <img src={IconUser} alt="user icon log-in" />
                 </Link>)}
 
-              </li>
-
-              <li className="hidden lg:block hover:scale-110 transition-transform">
-                <a href="#">
-                  <img src={IconHelp} alt="help icon" />
-                </a>
               </li>
               <li className="hover:scale-110 transition-transform">
                 <CartButton onClick={() => setCartIsOpen(true)} />

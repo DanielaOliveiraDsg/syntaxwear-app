@@ -1,8 +1,5 @@
 import { Link } from '@tanstack/react-router';
-import { MdAddShoppingCart } from 'react-icons/md';
 import type { Product } from '../../interfaces/productInterface';
-import { useContext } from 'react';
-import { CartContext } from '../../contexts/CartContext/CartContext';
 import { formatCurrency } from '../../utils/formatCurrency';
 
 interface ProductCardProps {
@@ -12,7 +9,6 @@ interface ProductCardProps {
 // INDIVIDUAL PRODUCT CARD COMPONENT
 
 export const ProductCard = ({ product }: ProductCardProps) => {
-  const { addItem } = useContext(CartContext);
 
   return (
     <div className="rounded-2xl bg-surface shadow-md">
@@ -33,9 +29,13 @@ export const ProductCard = ({ product }: ProductCardProps) => {
 
         <div className="flex justify-between mt-2.5">
           <p className="font-bold">{formatCurrency(product.price)}</p>
-          <button className="cursor-pointer" onClick={() => addItem({ ...product, quantity: 1 })}>
-            <MdAddShoppingCart className="h-7 w-7" />
-          </button>
+          <Link
+            to="/products/$productId"
+            params={{ productId: String(product.id) }}
+            className="flex items-center gap-2 border border-gray-500 text-text-secondary px-4 py-2 rounded-full text-xs font-medium uppercase tracking-wide hover:scale-103 transition-all active:scale-95"
+          >
+            Select Size
+          </Link>
         </div>
       </div>
     </div>

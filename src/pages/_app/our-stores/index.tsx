@@ -17,7 +17,7 @@ function RouteComponent() {
         alt="Banner of our store's interior with displayed sneakers"
         className="rounded-[20px] h-80 md:h-125 object-cover w-full"
       />
-      <h1 className="text-heading text-2xl max-w-7xl m-auto my-15 text-center">
+      <h1 className="text-gray-700 text-2xl max-w-7xl m-auto my-15 text-center">
         Our stores are the heart of our brand. Explore our recent collection,
         try your favorite styles and experience the of SynstaxWear confort in
         person.

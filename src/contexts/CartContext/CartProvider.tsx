@@ -1,14 +1,9 @@
 import { useEffect, useState } from 'react';
-import type { Product } from '../../interfaces/productInterface';
 import { CartContext } from './CartContext';
+import type { ProductCart } from '../../interfaces/cartInterface';
 
 interface CartProviderProps {
   children: React.ReactNode;
-}
-
-export interface ProductCart extends Product {
-  quantity: number;
-  selectedSize?: string; // New optional property for selected size
 }
 
 // standard form "@AppName:savedItem"
@@ -83,14 +78,28 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     setCart(newCart);
   }
 
+  // ---- empty the cart after a successful order ----
+  function clearCart() {
+    setCart([]);
+  }
+
+  // ---- total cost calc ----
+  // Number(item.price) to ensure it's a math-ready value
+  const totalAmount = cart.reduce(
+    (acc, item) => acc + Number(item.price) * item.quantity,
+    0
+  );
+
   return (
     <CartContext.Provider
       value={{
         cart,
+        totalAmount,
         addItem,
         removeItem,
         increment,
         decrement,
+        clearCart,
       }}
     >
       {children}

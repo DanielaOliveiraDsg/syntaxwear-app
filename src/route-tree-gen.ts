@@ -17,6 +17,8 @@ import { Route as AppProductsIndexRouteImport } from './pages/_app/products/inde
 import { Route as AppOurStoresIndexRouteImport } from './pages/_app/our-stores/index'
 import { Route as AppAboutUsIndexRouteImport } from './pages/_app/about-us/index'
 import { Route as AppProductsProductIdRouteImport } from './pages/_app/products/$productId'
+import { Route as AppOrderConfirmationRouteImport } from './pages/_app/order/confirmation'
+import { Route as AppOrderCheckoutRouteImport } from './pages/_app/order/checkout'
 import { Route as AppProductsCategoryCategoryRouteImport } from './pages/_app/products/category/$category'
 
 const AppLayoutRoute = AppLayoutRouteImport.update({
@@ -58,6 +60,16 @@ const AppProductsProductIdRoute = AppProductsProductIdRouteImport.update({
   path: '/products/$productId',
   getParentRoute: () => AppLayoutRoute,
 } as any)
+const AppOrderConfirmationRoute = AppOrderConfirmationRouteImport.update({
+  id: '/order/confirmation',
+  path: '/order/confirmation',
+  getParentRoute: () => AppLayoutRoute,
+} as any)
+const AppOrderCheckoutRoute = AppOrderCheckoutRouteImport.update({
+  id: '/order/checkout',
+  path: '/order/checkout',
+  getParentRoute: () => AppLayoutRoute,
+} as any)
 const AppProductsCategoryCategoryRoute =
   AppProductsCategoryCategoryRouteImport.update({
     id: '/products/category/$category',
@@ -69,6 +81,8 @@ export interface FileRoutesByFullPath {
   '/': typeof AppIndexRoute
   '/sign-in': typeof AuthSignInRoute
   '/sign-up': typeof AuthSignUpRoute
+  '/order/checkout': typeof AppOrderCheckoutRoute
+  '/order/confirmation': typeof AppOrderConfirmationRoute
   '/products/$productId': typeof AppProductsProductIdRoute
   '/about-us/': typeof AppAboutUsIndexRoute
   '/our-stores/': typeof AppOurStoresIndexRoute
@@ -79,6 +93,8 @@ export interface FileRoutesByTo {
   '/sign-in': typeof AuthSignInRoute
   '/sign-up': typeof AuthSignUpRoute
   '/': typeof AppIndexRoute
+  '/order/checkout': typeof AppOrderCheckoutRoute
+  '/order/confirmation': typeof AppOrderConfirmationRoute
   '/products/$productId': typeof AppProductsProductIdRoute
   '/about-us': typeof AppAboutUsIndexRoute
   '/our-stores': typeof AppOurStoresIndexRoute
@@ -91,6 +107,8 @@ export interface FileRoutesById {
   '/_auth/sign-in': typeof AuthSignInRoute
   '/_auth/sign-up': typeof AuthSignUpRoute
   '/_app/': typeof AppIndexRoute
+  '/_app/order/checkout': typeof AppOrderCheckoutRoute
+  '/_app/order/confirmation': typeof AppOrderConfirmationRoute
   '/_app/products/$productId': typeof AppProductsProductIdRoute
   '/_app/about-us/': typeof AppAboutUsIndexRoute
   '/_app/our-stores/': typeof AppOurStoresIndexRoute
@@ -103,6 +121,8 @@ export interface FileRouteTypes {
     | '/'
     | '/sign-in'
     | '/sign-up'
+    | '/order/checkout'
+    | '/order/confirmation'
     | '/products/$productId'
     | '/about-us/'
     | '/our-stores/'
@@ -113,6 +133,8 @@ export interface FileRouteTypes {
     | '/sign-in'
     | '/sign-up'
     | '/'
+    | '/order/checkout'
+    | '/order/confirmation'
     | '/products/$productId'
     | '/about-us'
     | '/our-stores'
@@ -124,6 +146,8 @@ export interface FileRouteTypes {
     | '/_auth/sign-in'
     | '/_auth/sign-up'
     | '/_app/'
+    | '/_app/order/checkout'
+    | '/_app/order/confirmation'
     | '/_app/products/$productId'
     | '/_app/about-us/'
     | '/_app/our-stores/'
@@ -195,6 +219,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppProductsProductIdRouteImport
       parentRoute: typeof AppLayoutRoute
     }
+    '/_app/order/confirmation': {
+      id: '/_app/order/confirmation'
+      path: '/order/confirmation'
+      fullPath: '/order/confirmation'
+      preLoaderRoute: typeof AppOrderConfirmationRouteImport
+      parentRoute: typeof AppLayoutRoute
+    }
+    '/_app/order/checkout': {
+      id: '/_app/order/checkout'
+      path: '/order/checkout'
+      fullPath: '/order/checkout'
+      preLoaderRoute: typeof AppOrderCheckoutRouteImport
+      parentRoute: typeof AppLayoutRoute
+    }
     '/_app/products/category/$category': {
       id: '/_app/products/category/$category'
       path: '/products/category/$category'
@@ -207,6 +245,8 @@ declare module '@tanstack/react-router' {
 
 interface AppLayoutRouteChildren {
   AppIndexRoute: typeof AppIndexRoute
+  AppOrderCheckoutRoute: typeof AppOrderCheckoutRoute
+  AppOrderConfirmationRoute: typeof AppOrderConfirmationRoute
   AppProductsProductIdRoute: typeof AppProductsProductIdRoute
   AppAboutUsIndexRoute: typeof AppAboutUsIndexRoute
   AppOurStoresIndexRoute: typeof AppOurStoresIndexRoute
@@ -216,6 +256,8 @@ interface AppLayoutRouteChildren {
 
 const AppLayoutRouteChildren: AppLayoutRouteChildren = {
   AppIndexRoute: AppIndexRoute,
+  AppOrderCheckoutRoute: AppOrderCheckoutRoute,
+  AppOrderConfirmationRoute: AppOrderConfirmationRoute,
   AppProductsProductIdRoute: AppProductsProductIdRoute,
   AppAboutUsIndexRoute: AppAboutUsIndexRoute,
   AppOurStoresIndexRoute: AppOurStoresIndexRoute,
