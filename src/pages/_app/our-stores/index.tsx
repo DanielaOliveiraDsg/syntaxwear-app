@@ -19,7 +19,7 @@ function RouteComponent() {
       />
       <h1 className="text-gray-700 text-2xl max-w-7xl m-auto my-15 text-center">
         Our stores are the heart of our brand. Explore our recent collection,
-        try your favorite styles and experience the of SynstaxWear confort in
+        try your favorite styles and experience the Synstaxwear confort in
         person.
       </h1>
 
@@ -38,7 +38,7 @@ function RouteComponent() {
         </div>
         <div className='flex flex-col items-center'>
           <div className="text-center px-3 pb-8">
-            <h2 className="text-3xl mb-5 text-heading">New stores arrivals</h2>
+            <h2 className="text-3xl mb-5 text-heading">New store arrivals</h2>
             <p className="text-[20px] md:text-2xl text-gray-800 leading-relaxed">
               Check the season new arrivals in a store close to you!
             </p>
