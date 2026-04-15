@@ -153,7 +153,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   };
 
   async function signInWithGoogle(credential: string): Promise<void> {
-    const response = await fetch('`${API_BASE_URL}/auth/google-login`', {
+    const response = await fetch(`${API_BASE_URL}/auth/google-login`, {
       method: 'POST',
       credentials: 'include', // Include cookies in the request
       headers: {
