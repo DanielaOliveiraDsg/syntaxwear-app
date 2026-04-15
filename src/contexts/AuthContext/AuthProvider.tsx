@@ -10,6 +10,7 @@ import {
 interface AuthProviderProps {
   children: React.ReactNode;
 }
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<User | null>(null);
@@ -18,9 +19,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   useEffect(() => {
     const fecthUserProfile = async () => {
       try {
-        const response = await fetch('http://localhost:3000/auth/profile', {
+        const response = await fetch(`${API_BASE_URL}/auth/profile`, {
           method: 'GET',
-          credentials: 'include', 
+          credentials: 'include',
         });
         if (!response.ok) {
           throw new Error('Failed to fetch user profile');
@@ -98,7 +99,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   };
 
   const logIn = async (credentials: Credentials): Promise<void> => {
-    const response = await fetch('http://localhost:3000/auth/login', {
+    const response = await fetch(`${API_BASE_URL}/auth/login`, {
       method: 'POST',
       credentials: 'include', // Include cookies in the request
       headers: {
@@ -118,7 +119,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   };
 
   const signUp = async (data: RegisterInput): Promise<void> => {
-    const response = await fetch('http://localhost:3000/auth/register', {
+    const response = await fetch(`${API_BASE_URL}/auth/register`, {
       method: 'POST',
       credentials: 'include', // Include cookies in the request
       headers: {
@@ -139,7 +140,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const logOut = async (): Promise<void> => {
     try {
-      await fetch('http://localhost:3000/auth/logout', {
+      await fetch(`${API_BASE_URL}/auth/logout`, {
         method: 'POST',
         credentials: 'include', // Include cookies in the request
       });
@@ -152,7 +153,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   };
 
   async function signInWithGoogle(credential: string): Promise<void> {
-    const response = await fetch('http://localhost:3000/auth/google-login', {
+    const response = await fetch('`${API_BASE_URL}/auth/google-login`', {
       method: 'POST',
       credentials: 'include', // Include cookies in the request
       headers: {
