@@ -18,7 +18,7 @@ declare module '@tanstack/react-router' {
 
 function App() {
   return (
-    <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
+    <GoogleOAuthProvider clientId="154858001748-hck3jpog2bp8iii4odtnekbi6r9sbujv.apps.googleusercontent.com">
       <AuthProvider>
         <CartProvider>
           <RouterProvider router={router} />
