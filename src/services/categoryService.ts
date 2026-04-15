@@ -1,7 +1,7 @@
 import { notFound } from "@tanstack/react-router";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL;
-
+console.log('Vercel is using this URL:', API_BASE_URL);
 export async function getCategoryByName(name: string) {
   const params = new URLSearchParams({ page: '1', limit: '1', search: name });
   const response = await fetch(`${API_BASE_URL}/categories?${params.toString()}`);

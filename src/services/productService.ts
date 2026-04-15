@@ -3,6 +3,7 @@
 import type { Product } from '../interfaces/productInterface';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL;
+console.log('Vercel is using this URL:', API_BASE_URL);
 const DEFAULT_LIMIT = 3;
 
 interface GetProductParams {

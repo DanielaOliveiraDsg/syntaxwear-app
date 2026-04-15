@@ -2,7 +2,7 @@ import type { ProductCart } from '../interfaces/cartInterface';
 import type { CreateOrderData, OrderItemInput } from '../interfaces/orderInterface';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL;
-
+console.log('Vercel is using this URL:', API_BASE_URL);
 /**
  * Helper: transforms the UI Cart items into the format the backend API expects
  * mapping 'selectedSize' from the UI to 'size' for the Database.
