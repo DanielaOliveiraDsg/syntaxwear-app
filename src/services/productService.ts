@@ -2,7 +2,7 @@
 
 import type { Product } from '../interfaces/productInterface';
 
-const API_BASE_URL = 'http://localhost:3000';
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 const DEFAULT_LIMIT = 3;
 
 interface GetProductParams {

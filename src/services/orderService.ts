@@ -1,7 +1,7 @@
 import type { ProductCart } from '../interfaces/cartInterface';
 import type { CreateOrderData, OrderItemInput } from '../interfaces/orderInterface';
 
-const API_BASE_URL = 'http://localhost:3000';
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 /**
  * Helper: transforms the UI Cart items into the format the backend API expects
