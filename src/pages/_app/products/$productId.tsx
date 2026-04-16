@@ -40,8 +40,6 @@ function RouteComponent() {
   const originalPrice = Number(product.price);
   const discountPrice = originalPrice * 0.9;
 
-  console.log('Current Product:', product);
-
   return (
     <section className="container mb-10 pt-44 md:pt-54 pb-10 md:px-10 text-text-secondary">
       <nav className="text-sm mb-6">

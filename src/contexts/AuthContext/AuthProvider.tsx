@@ -31,7 +31,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         setUser(data.user);
         setIsAuthenticated(true);
 
-        console.log(data.user);
       } catch (error) {
         console.error('Error fetching user profile:', error);
         setUser(null);

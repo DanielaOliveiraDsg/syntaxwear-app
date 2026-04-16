@@ -30,7 +30,7 @@ export const RegisterForm = () => {
     delete (registerData as Partial<RegisterUserFormData>).confirmPassword;
 
     setServerError(null);
-    console.log('Registering user with data:', registerData);
+    
 
     try {
       await signUp(registerData);

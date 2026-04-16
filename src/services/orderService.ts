@@ -2,7 +2,7 @@ import type { ProductCart } from '../interfaces/cartInterface';
 import type { CreateOrderData, OrderItemInput } from '../interfaces/orderInterface';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL;
-console.log('Vercel is using this URL:', API_BASE_URL);
+
 
 export const mapCartToOrderItems = (cart: ProductCart[]): OrderItemInput[] => {
   return cart.map((item) => ({

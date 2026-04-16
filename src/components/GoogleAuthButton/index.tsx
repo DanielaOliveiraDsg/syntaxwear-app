@@ -21,7 +21,7 @@ export const GoogleAuthButton = ({
     credentialResponse: CredentialResponse
   ): Promise<void> => {
     const credential = credentialResponse.credential;
-    console.log('Google Token:', credential);
+    
 
     if (!credential) {
       setGoogleError('Google Sign-In failed. Please try again.');
